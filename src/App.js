@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import 'materialize-css';
 import 'materialize-css/dist/css/materialize.min.css';
-import Navbar from './component/navbar/Navbar.js';
+import Navbar from './component/Navbar.js';
+import LoginForm from './component/LoginForm';
 import Calendar from './Calendar.js';
 import {Switch, Route } from 'react-router-dom';
 
@@ -19,7 +20,8 @@ class App extends Component {
     return (
         <div className="App">
           <Navbar/>
-          <Main/>
+          {/*<Main/>*/}
+          <LoginForm/>
         </div>
     );
   }
