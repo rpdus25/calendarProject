@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import './Navbar.css';
 import {NavLink} from 'react-router-dom';
+import { connect } from 'react-redux';
+
 
 //상단 메뉴를 가지고 있는 컴포넌트
 class Navbar extends Component {
   render() {
+    // const { visible } = this.props;
+    // if(!visible) return null;
+
     return (
 		<nav>
 			<div className="nav-wrapper">
@@ -26,3 +31,5 @@ class Navbar extends Component {
 }
 
 export default Navbar;
+
+
