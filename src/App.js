@@ -3,10 +3,8 @@ import './App.css';
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import {Switch, BrowserRouter as Router, Route, Link, NavLink, Redirect, withRouter} from "react-router-dom";
-import Login from './pages/Login'
+import Login from './component/LoginForm'
 import MainView from "./component/MainView";
-import Calendar from "./Calendar.js";
-
 
 
 const Main = () => (
@@ -18,34 +16,27 @@ const Main = () => (
 );
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      redirect: true,
-    }
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     redirect: true,
+  //   }
+  // }
 
   render () {
-    const setRedirect = () => {
-      this.setState({
-        redirect: false,
-      })
-      return this.state
-    }
 
-    const renderRedirect = () => {
-      if (this.state.redirect) {
-        return <Redirect to='/login'/>
-      } else {
-        return <Redirect to='/'/>
-      }
-    }
+    // const renderRedirect = () => {
+    //   if (this.state.redirect) {
+    //     return <Redirect to='/login'/>
+    //   } else {
+    //     return <Redirect to='/'/>
+    //   }
+    // }
 
     return (
       <div className="App">
-        {renderRedirect()}
+        {/*{renderRedirect()}*/}
         <Main/>
-        {setRedirect}
       </div>
     )
   }
