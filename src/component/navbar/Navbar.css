@@ -42,12 +42,17 @@ nav ul a:hover {
     float: right;
 }
 
+.nav-wrapper .right ul {
+    overflow: hidden;
+}
+
 nav,
+nav li,
 nav .nav-wrapper i,
 nav a.sidenav-trigger,
 nav a.sidenav-trigger i {
-    height: 65px;
-    line-height: 64px;
+    height: 50px;
+    line-height: 50px;
 }
 
 nav i,
@@ -56,5 +61,6 @@ nav [class*="mdi-"],
 nav i.material-icons {
     display: block;
     font-size: 24px;
+    line-height: 50px;
 }
 

@@ -73,7 +73,7 @@ class Calendar extends Component {
     return <div className="calendar-wrap">
       <div className="calendar-top">
         <button><i className="material-icons">navigate_before</i></button>
-        <div className="calender-today">
+        <div className="calender-month">
           <button>{(this.state.date.getFullYear())}년</button>
           <button>{this.getMothName(this.state.date.getMonth())}월</button>
         </div>

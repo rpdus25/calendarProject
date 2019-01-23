@@ -1,3 +1,12 @@
+.calendar-wrap {
+    position: absolute;
+    left: 0;
+    top:50px;
+    right: 0;
+    bottom:0;
+    text-align: center;
+}
+
 .calendar-top {
     height: 50px;
     line-height: 50px;
@@ -17,13 +26,13 @@
     margin: 0 5px;
 }
 
-.calender-today,
-.calender-today span {
+.calender-month,
+.calender-month span {
     display: inline-block;
     vertical-align: middle;
 }
 
-.calender-today span {
+.calender-month span {
     margin: 0 5px;
 }
 
