@@ -41,7 +41,7 @@ class LoginPage extends React.Component {
         const { loggingIn } = this.props;
         const { username, password, submitted } = this.state;
         return (
-            <div className="col-md-6 col-md-offset-3">
+            <div className="login-wrap">
                 <div className="alert alert-info">
                     Username: test<br />
                     Password: test

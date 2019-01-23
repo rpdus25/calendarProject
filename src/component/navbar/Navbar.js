@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 //상단 메뉴를 가지고 있는 컴포넌트
 class Navbar extends Component {
   render() {
-    const { user, users } = this.props;
+    const { user } = this.props;
     return (
 		<nav className="nav-wrapper">
 			<a className="brand-logo">VALUESOFT</a>
