@@ -1,10 +1,10 @@
 import React from 'react';
 import './HomePage.css';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { userActions } from '../../_actions/index';
-import Navbar from "../../component/Navbar/Navbar";
+import Navbar from "../../component/navbar/Navbar";
+import Calenda from "../../container/calenda/Calenda";
 
 class HomePage extends React.Component {
     componentDidMount() {
@@ -16,6 +16,7 @@ class HomePage extends React.Component {
         return (
             <div className="">
               <Navbar user={user} />
+              <Calenda/>
                 {/*<h3>Users from secure api end point:</h3>*/}
                 {/*{users.loading && <em>Loading users...</em>}*/}
                 {/*{users.error && <span className="text-danger">ERROR: {users.error}</span>}*/}

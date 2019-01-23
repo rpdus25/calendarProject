@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4541fee2-1d0c-42c4-827e-31c9de8d3588" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/component/Navbar/Navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Navbar/Navbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/Navbar/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/Navbar/Navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/container/HomePage/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/HomePage/HomePage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/container/calenda/Calenda.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/container/calenda/Calenda.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Navbar/Navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/navbar/Navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/Navbar/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/navbar/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/PrivateRoute/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/privateroute/PrivateRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/HomePage/HomePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/homepage/HomePage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/HomePage/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/homepage/HomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/HomePage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/homepage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/LoginPage/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/loginpage/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/LoginPage/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/loginpage/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/container/LoginPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/loginpage/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,7 +28,7 @@
       <split-first>
         <leaf>
           <file leaf-file-name="LoginPage.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/container/LoginPage/LoginPage.js">
+            <entry file="file://$PROJECT_DIR$/src/container/loginpage/LoginPage.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="646">
                   <caret line="71" column="18" lean-forward="true" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
@@ -45,11 +55,11 @@
               <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
-          <file leaf-file-name="HomePage.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/container/HomePage/HomePage.js">
+          <file leaf-file-name="HomePage.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/container/homepage/HomePage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="29" column="20" lean-forward="true" selection-start-line="18" selection-start-column="15" selection-end-line="29" selection-end-column="20" />
+                <state relative-caret-position="306">
+                  <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -57,8 +67,20 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="Calenda.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/container/calenda/Calenda.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+                  <folding>
+                    <element signature="e#0#41#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="HomePage.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/container/HomePage/HomePage.css">
+            <entry file="file://$PROJECT_DIR$/src/container/homepage/HomePage.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="2703">
                   <caret line="159" column="1" selection-start-line="159" selection-start-column="1" selection-end-line="159" selection-end-column="1" />
@@ -67,7 +89,7 @@
             </entry>
           </file>
           <file leaf-file-name="PrivateRoute.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/component/PrivateRoute/PrivateRoute.js">
+            <entry file="file://$PROJECT_DIR$/src/component/privateroute/PrivateRoute.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state>
                   <folding>
@@ -78,7 +100,7 @@
             </entry>
           </file>
           <file leaf-file-name="Navbar.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/component/Navbar/Navbar.css">
+            <entry file="file://$PROJECT_DIR$/src/component/navbar/Navbar.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="272">
                   <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
@@ -95,26 +117,14 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/index.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf>
           <file leaf-file-name="Navbar.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/component/Navbar/Navbar.js">
+            <entry file="file://$PROJECT_DIR$/src/component/navbar/Navbar.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
+                <state relative-caret-position="219">
                   <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
@@ -140,8 +150,8 @@
       <find>react-scripts</find>
       <find>You're logged in wit</find>
       <find>Users from secure</find>
-      <find>rom secur</find>
       <find>nav .brand-logo</find>
+      <find>rom secur</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -166,6 +176,8 @@
         <option value="$PROJECT_DIR$/src/component/Navbar/Navbar.css" />
         <option value="$PROJECT_DIR$/src/component/Navbar/Navbar.js" />
         <option value="$PROJECT_DIR$/src/container/HomePage/HomePage.js" />
+        <option value="$PROJECT_DIR$/src/container/homepage/HomePage.js" />
+        <option value="$PROJECT_DIR$/src/container/calenda/Calenda.js" />
       </list>
     </option>
   </component>
@@ -224,7 +236,14 @@
               <item name="calendarProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="component" type="462c0819:PsiDirectoryNode" />
-              <item name="Navbar" type="462c0819:PsiDirectoryNode" />
+              <item name="navbar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="calendarProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="calendarProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
+              <item name="privateroute" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="calendarProject" type="b2602c69:ProjectViewProjectNode" />
@@ -237,14 +256,21 @@
               <item name="calendarProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="container" type="462c0819:PsiDirectoryNode" />
-              <item name="HomePage" type="462c0819:PsiDirectoryNode" />
+              <item name="calenda" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="calendarProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="calendarProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="container" type="462c0819:PsiDirectoryNode" />
-              <item name="LoginPage" type="462c0819:PsiDirectoryNode" />
+              <item name="homepage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="calendarProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="calendarProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="container" type="462c0819:PsiDirectoryNode" />
+              <item name="loginpage" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -268,6 +294,7 @@
       <recent name="D:\Workspace\calendarProject\src\container" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Workspace\calendarProject\src\container" />
       <recent name="D:\Workspace\calendarProject\src\component\Navbar" />
       <recent name="D:\Workspace\calendarProject" />
     </key>
@@ -337,12 +364,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1548228550899</updated>
-      <workItem from="1548228552559" duration="4018000" />
+      <workItem from="1548228552559" duration="4299000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4018000" />
+    <option name="totallyTimeSpent" value="4299000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2552" y="-8" width="1936" height="1056" extended-state="6" />
@@ -367,8 +394,8 @@
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" weight="0.7002237" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1444563" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.21140939" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1444563" />
       <window_info id="JRebel" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Theme Preview" />
@@ -443,7 +470,7 @@
     <entry file="file://$PROJECT_DIR$/src/container.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/container/LoginPage/Login.css">
+    <entry file="file://$PROJECT_DIR$/src/container/loginpage/Login.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$USER_HOME$/Desktop/src/index.js">
@@ -456,7 +483,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/container/LoginPage/index.js">
+    <entry file="file://$PROJECT_DIR$/src/container/loginpage/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
@@ -469,7 +496,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/container/LoginPage/LoginPage.js">
+    <entry file="file://$PROJECT_DIR$/src/container/loginpage/LoginPage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="71" column="18" lean-forward="true" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
@@ -498,14 +525,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/Navbar/Navbar.css">
+    <entry file="file://$PROJECT_DIR$/src/component/navbar/Navbar.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/PrivateRoute/PrivateRoute.js">
+    <entry file="file://$PROJECT_DIR$/src/component/privateroute/PrivateRoute.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -514,16 +541,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/container/HomePage/HomePage.css">
+    <entry file="file://$PROJECT_DIR$/src/component/navbar/Navbar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2703">
-          <caret line="159" column="1" selection-start-line="159" selection-start-column="1" selection-end-line="159" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/Navbar/Navbar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="219">
           <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
@@ -531,12 +551,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/container/HomePage/HomePage.js">
+    <entry file="file://$PROJECT_DIR$/src/container/calenda/CalendaTop.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/container/calenda/Content.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/container/calenda/ContentList.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/container/calenda/ContentView.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/container/homepage/HomePage.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="20" lean-forward="true" selection-start-line="18" selection-start-column="15" selection-end-line="29" selection-end-column="20" />
+        <state relative-caret-position="2703">
+          <caret line="159" column="1" selection-start-line="159" selection-start-column="1" selection-end-line="159" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/container/homepage/HomePage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/container/calenda/Calenda.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
