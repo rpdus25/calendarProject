@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './HomePage.css';
 import { connect } from 'react-redux';
-
 import { userActions } from '../../actions/index';
 import Navbar from "../../component/navbar/Navbar";
 import Calenda from "../../container/calenda/Calenda";
 import Annual from "../annual/Annual";
+import Modal from 'react-modal';
+import Popup from "../../component/popup/Popup";
 
 class HomePage extends Component {
     componentDidMount() {
@@ -19,6 +20,11 @@ class HomePage extends Component {
               <Navbar user={user} />
               <Annual/>
               <Calenda/>
+
+              <Popup/>
+
+
+                {/*관리자일 경우 */}
                 {/*<h3>Users from secure api end point:</h3>*/}
                 {/*{users.loading && <em>Loading users...</em>}*/}
                 {/*{users.error && <span className="text-danger">ERROR: {users.error}</span>}*/}

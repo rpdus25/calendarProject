@@ -8,15 +8,6 @@ nav .nav-wrapper {
     height: 100%;
 }
 
-nav .brand-logo {
-    position: absolute;
-    color: #fff;
-    display: inline-block;
-    font-size: 21px;
-    margin-left: -55px;
-    left:50%;
-}
-
 nav ul li {
     transition: background-color .3s;
     float: left;

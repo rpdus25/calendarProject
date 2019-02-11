@@ -11,7 +11,9 @@ class Annual extends Component {
 
   render() {
     return <div className="">
-      연차내용
+      <button>출근</button>
+      <button>연차 사용</button>
+      <button>근무 시간 변경</button>
     </div>
   }
 }
