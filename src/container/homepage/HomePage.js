@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './HomePage.css';
 import { connect } from 'react-redux';
 
-import { userActions } from '../../_actions/index';
+import { userActions } from '../../actions/index';
 import Navbar from "../../component/navbar/Navbar";
 import Calenda from "../../container/calenda/Calenda";
+import Annual from "../annual/Annual";
 
-class HomePage extends React.Component {
+class HomePage extends Component {
     componentDidMount() {
         this.props.dispatch(userActions.getAll());
     }
@@ -16,6 +17,7 @@ class HomePage extends React.Component {
         return (
             <div className="">
               <Navbar user={user} />
+              <Annual/>
               <Calenda/>
                 {/*<h3>Users from secure api end point:</h3>*/}
                 {/*{users.loading && <em>Loading users...</em>}*/}

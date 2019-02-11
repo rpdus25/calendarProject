@@ -37,7 +37,7 @@ class Calendar extends Component {
     let dateNum =  1 - new Date(this.state.date.getFullYear(),this.state.date.getMonth(),1).getDay();
     let currentLastDate = this.getLastDate(this.state.date.getMonth());
     let prevLastDate = this.getLastDate(this.state.date.getMonth() -1);
-    let week = Math.ceil( (this.getLastDate(this.state.date.getMonth()) ) / 7 );
+    let week = Math.ceil( (this.getLastDate(this.state.date.getMonth() -1) ) / 7 );
 
     const table = [];
     // Outer loop to create parent
@@ -51,7 +51,7 @@ class Calendar extends Component {
           children.push(<div className="flex-item"><span className="calendar-num disabled">{Math.abs(currentLastDate - dateNum)}</span></div>);
         }else {
           if(dateNum === this.state.date.getDate()) {
-            children.push(<div className="flex-item"><span className="calendar-num calendar-today" >{dateNum}</span></div>);
+            children.push(<div className="flex-item"><span className="calendar-num calendar-today">{dateNum}</span></div>);
           } else {
             children.push(<div className="flex-item"><span className="calendar-num">{dateNum}</span></div>);
           }

@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { history } from '../_helpers';
-import { alertActions } from '../_actions';
+import { history } from '../helpers';
+import { alertActions } from '../actions';
 import { PrivateRoute } from '../component/privateroute/index';
 import { HomePage } from '../container/homepage';
 import { LoginPage } from '../container/loginpage';
 
-class App extends React.Component {
+class App extends Component {
     constructor(props) {
         super(props);
 
@@ -37,6 +37,7 @@ class App extends React.Component {
     }
 }
 
+// store.getState() 결과 값인 state를 파라미터로 받아 컴포넌트의 props로 사용할 객체를 반환
 function mapStateToProps(state) {
     const { alert } = state;
     return {

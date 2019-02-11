@@ -2,7 +2,7 @@ import React from 'react';
 import Login from './Login.css';
 import { connect } from 'react-redux';
 
-import { userActions } from '../../_actions/index';
+import { userActions } from '../../actions/index';
 
 class LoginPage extends React.Component {
     constructor(props) {
@@ -21,7 +21,8 @@ class LoginPage extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(e) {
+
+  handleChange(e) {
         const { name, value } = e.target;
         this.setState({ [name]: value });
     }
