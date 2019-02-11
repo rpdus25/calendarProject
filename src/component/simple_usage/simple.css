@@ -1,0 +1,16 @@
+.list-wrap {
+    display: flex;
+}
+
+.list-wrap dt {
+    flex-basis: 120px;
+}
+
+.list-wrap dd {
+    flex: 1 1 0;
+}
+
+.list-wrap .material-icons {
+    display: inline-block;
+    vertical-align:middle;
+}
