@@ -5,8 +5,6 @@ import { userActions } from '../../actions/index';
 import Navbar from "../../component/navbar/Navbar";
 import Calenda from "../../container/calenda/Calenda";
 import Annual from "../annual/Annual";
-import Modal from 'react-modal';
-import Popup from "../../component/popup/Popup";
 
 class HomePage extends Component {
     componentDidMount() {
@@ -21,7 +19,7 @@ class HomePage extends Component {
               <Annual/>
               <Calenda/>
 
-              <Popup/>
+
 
 
                 {/*관리자일 경우 */}

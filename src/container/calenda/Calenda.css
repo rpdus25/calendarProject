@@ -116,5 +116,10 @@
     -moz-border-radius: 20px;
     background-color:#ee6e73;
 }
-
-
+.calendar-top {
+    display: flex;
+    justify-content: space-between;
+}
+.calendar-top >* {
+    flex: 1;
+}

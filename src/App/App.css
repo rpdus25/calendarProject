@@ -224,9 +224,9 @@ label {
 
 .btn {
     display: inline-block;
-    padding: 6px 12px;
+    padding: 6px 10px;
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 12px;
     border: 1px solid transparent;
     border-radius: 4px;
     -webkit-border-radius: 4px;

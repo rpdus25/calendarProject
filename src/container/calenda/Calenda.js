@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Calenda.css';
+import Popup from "../../component/popup/Popup";
 // import { Link, NavLink } from 'react-router-dom';
 
 class Calendar extends Component {
@@ -72,12 +73,20 @@ class Calendar extends Component {
     // If it is weeken
     return <div className="calendar-wrap">
       <div className="calendar-top">
-        <button><i className="material-icons">navigate_before</i></button>
-        <div className="calender-month">
-          <button>{(this.state.date.getFullYear())}년</button>
-          <button>{this.getMothName(this.state.date.getMonth())}월</button>
+        <div className="btn-wrap">
+          <Popup/>
         </div>
-        <button><i className="material-icons">navigate_next</i></button>
+        <div className="calendar-top-tit">
+          <button><i className="material-icons">navigate_before</i></button>
+          <div className="calender-month">
+            <button>{(this.state.date.getFullYear())}년</button>
+            <button>{this.getMothName(this.state.date.getMonth())}월</button>
+          </div>
+          <button><i className="material-icons">navigate_next</i></button>
+        </div>
+        <div>
+          asdf
+        </div>
       </div>
       <ul className="flex-row calender-head">
         <li className="flex-item">{this.getDayName(0)}</li>

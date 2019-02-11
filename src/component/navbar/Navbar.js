@@ -35,7 +35,6 @@ class Navbar extends Component {
 
 		<nav className="nav-wrapper">
       <span>{this.state.date.toLocaleTimeString()}</span>
-			<button>Batch</button>
 			<div className="right">
 				<ul>
           <li>

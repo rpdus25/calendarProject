@@ -9,7 +9,7 @@
 .list-wrap dd {
     flex: 1 1 0;
 }
-
+.list-wrap input,
 .list-wrap .material-icons {
     display: inline-block;
     vertical-align:middle;

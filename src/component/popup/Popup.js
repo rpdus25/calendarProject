@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 // import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import SimpleUsage from '../simple_usage'
-
-const appElement = document.getElementById('app');
+import SimpleUsage from '../modal'
 
 Modal.setAppElement('#app');
 
@@ -14,12 +12,11 @@ const examples = [
 class Popup extends Component {
   render() {
     return (
-      <div>
+      <div className="modal-wrap">
         {examples.map((example, key) => {
           const ExampleApp = example.app;
           return (
-            <div key={key + 1} className="example" style={{position:"fixed",left:0,top:0}}>
-              <h3>{`#${key + 1}. ${example.label}`}</h3>
+            <div key={key + 1} className="example">
               <ExampleApp />
             </div>
           );
