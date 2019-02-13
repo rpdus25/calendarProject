@@ -258,3 +258,23 @@ label {
     -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
 }
+
+/* 모달 수정 */
+.ReactModal__Overlay {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:rgba(0, 0, 0, 0.75) !important;
+}
+
+.ReactModal__Content {
+    background: #fff;
+    margin: 0 auto;
+    position: static !important;
+    border:none;
+    border-radius: 4px;
+    overflow: auto;
+    outline: none;
+    padding: 20px;
+    -webkit-overflow-scrolling: touch;
+}

@@ -4,6 +4,7 @@ import GotoWork from './GotoWork';
 import WorkTimeChange from './WorkTimeChange';
 import DefaultWorkTimeChange from './DefaultWorkTimeChange';
 import AnnualLeaveUse from './AnnualLeaveUse';
+import AnnualManagement from './AnnualManagement';
 
 import './modal.css';
 
@@ -11,6 +12,7 @@ const MODAL_A = 'modal_a';
 const MODAL_B = 'modal_b';
 const MODAL_C = 'modal_c';
 const MODAL_D = 'modal_d';
+const MODAL_E = 'modal_e';
 
 const DEFAULT_TITLE = 'Default title';
 
@@ -98,6 +100,15 @@ class SimpleUsage extends Component {
           onAfterOpen={this.handleOnAfterOpenModal}
           onRequestClose={this.handleModalCloseRequest}
           askToClose={this.toggleModal(MODAL_D)}
+        />
+
+        <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_E)}>연차 관리</button>
+        <AnnualManagement
+          title={this.state.title1}
+          isOpen={currentModal == MODAL_E}
+          onAfterOpen={this.handleOnAfterOpenModal}
+          onRequestClose={this.handleModalCloseRequest}
+          askToClose={this.toggleModal(MODAL_E)}
         />
 
 

@@ -3,7 +3,7 @@ import './HomePage.css';
 import { connect } from 'react-redux';
 import { userActions } from '../../actions/index';
 import Navbar from "../../component/navbar/Navbar";
-import Calenda from "../../container/calenda/Calenda";
+import Calenda2 from "../../container/calenda/Calenda2";
 import Annual from "../annual/Annual";
 
 class HomePage extends Component {
@@ -17,7 +17,7 @@ class HomePage extends Component {
             <div className="">
               <Navbar user={user} />
               <Annual/>
-              <Calenda/>
+              <Calenda2/>
 
 
 

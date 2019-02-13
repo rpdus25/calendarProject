@@ -11,17 +11,17 @@ export default props => {
   return (
     <Modal
       style={{
-        overlay: {
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: 'rgba(0, 0, 0, 0.75)'
-        },
+        // overlay: {
+        //   position: 'fixed',
+        //   top: 0,
+        //   left: 0,
+        //   right: 0,
+        //   bottom: 0,
+        //   display: 'flex',
+        //   justifyContent: 'center',
+        //   alignItems: 'center',
+        //   backgroundColor: 'rgba(0, 0, 0, 0.75)'
+        // },
         content: {
           position: 'static',
           width:'400px',
@@ -35,7 +35,7 @@ export default props => {
           padding: '20px'
         }
       }}
-      contentLabel="modalB"
+      contentLabel="modalC"
       closeTimeoutMS={150}
       isOpen={isOpen}
       onAfterOpen={onAfterOpen}

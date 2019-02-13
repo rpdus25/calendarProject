@@ -11,28 +11,9 @@ export default props => {
   return (
     <Modal
       style={{
-        overlay: {
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: 'rgba(0, 0, 0, 0.75)'
-        },
         content: {
-          position: 'static',
           width:'400px',
-          height:'300px',
-          margin:'0 auto',
-          background: '#fff',
-          overflow: 'auto',
-          WebkitOverflowScrolling: 'touch',
-          borderRadius: '4px',
-          outline: 'none',
-          padding: '20px'
+          height:'300px'
         }
       }}
       contentLabel="modalB"
