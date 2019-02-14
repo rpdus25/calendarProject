@@ -265,6 +265,7 @@ label {
     justify-content:center;
     align-items:center;
     background-color:rgba(0, 0, 0, 0.75) !important;
+    z-index: 10;
 }
 
 .ReactModal__Content {
@@ -277,4 +278,9 @@ label {
     outline: none;
     padding: 20px;
     -webkit-overflow-scrolling: touch;
+}
+
+/* 캘린더 수정 */
+.rbc-date-cell {
+    text-align: left !important;
 }
