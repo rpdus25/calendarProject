@@ -52,12 +52,13 @@ class Calenda2 extends Component {
           {/*</strong>*/}
         {/*</ExampleControlSlot.Entry>*/}
         <BigCalendar
+          popup
           selectable
           localizer={localizer}
           events={this.state.events}
           defaultView={BigCalendar.Views.MONTH}
           scrollToTime={new Date(1970, 1, 1, 6)}
-          defaultDate={new Date(2015, 3, 12)}
+          defaultDate={new Date()}
           onSelectEvent={event => alert(event.title)}
           onSelectSlot={this.handleSelect}
         />
