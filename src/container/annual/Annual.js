@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Annual.css';
-import Popup from "../../component/popup/Popup";
+import ModalMain from "../../component/modal/modalMain";
 
 class Annual extends Component {
   constructor(props) {
@@ -9,11 +9,10 @@ class Annual extends Component {
     }
   };
 
-
   render() {
     return <div className="annual-wrap">
       <div className="btn-wrap">
-        <Popup/>
+        <ModalMain/>
       </div>
       <ul className="annual-list">
         <li>기본 연차 : 15개</li>
@@ -25,7 +24,4 @@ class Annual extends Component {
     </div>
   }
 }
-
-
-
 export default Annual;

@@ -9,42 +9,128 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import ExampleControlSlot from '../ExampleControlSlot'
 
+
+
+
+
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
 const localizer = BigCalendar.momentLocalizer(moment)
 const DraggableCalendar = withDragAndDrop(BigCalendar)
-
+const DEFAULT_TITLE = 'Default title';
 
 const propTypes = {}
 
 class Calenda2 extends Component {
   constructor(...args) {
     super(...args)
-
     this.state = {
       events:events,
+      showModal: false,
+      title: DEFAULT_TITLE,
+    };
 
-    }
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+
+  handleOpenModal () {
+    this.setState({ showModal: true });
+  }
+
+  handleCloseModal () {
+    this.setState({ showModal: false });
   }
 
   handleSelect = ({ start, end }) => {
-    const title = window.prompt('New Event name');
-    if (title)
+    this.setState({ showModal: true });
+    // const title = window.prompt('New Event name');
+    if ({showModal: false})
       this.setState({
         events: [
           ...this.state.events,
           {
             start,
             end,
-            title,
+            // title,
           },
         ],
       })
   }
 
+  handleChange = (e) => {
+    this.setState({
+      input: e.target.value // input 의 다음 바뀔 값
+    });
+  }
+
+  handleCreate = () => {
+    const { input, todos } = this.state;
+    this.setState({
+      input: '', // 인풋 비우고
+      // concat 을 사용하여 배열에 추가
+      todos: todos.concat({
+        id: this.id++,
+        text: input,
+        checked: false
+      })
+    });
+  }
+
+  handleKeyPress = (e) => {
+    // 눌려진 키가 Enter 면 handleCreate 호출
+    if(e.key === 'Enter') {
+      this.handleCreate();
+    }
+  }
+
+  handleSubmit = (e) => {
+    console.log('submitted');
+
+    // 페이지 리로딩 방지
+    e.preventDefault();
+    // 상태값을 onCreate 를 통하여 부모에게 전달
+    this.props.save(this.state);
+    // 상태 초기화
+    this.setState({
+      title: '',
+      phone: ''
+    })
+  };
+
+  handleInputChange = e => {
+    let text = e.target.value;
+    if (text == '') {
+      text = DEFAULT_TITLE;
+    }
+    this.setState({ ...this.state, title1: text });
+  }
+
   render() {
     return (
       <div style={{ height:"calc(100vh - 200px)" }}>
+        <Modal
+          // save={this.save}
+          isOpen={this.state.showModal}
+          contentLabel="Minimal Modal Example"
+          onRequestClose={this.handleCloseModal}
+        >
+          <form onSubmit={this.handleSubmit}>
+            <input
+
+              type="text"
+              placeholder="이름"
+              value={this.state.title}
+              onChange={this.handleInputChange}
+              name="name"
+            />
+            <button type="submit">등록</button>
+            <button onClick={this.handleCloseModal}>Close Modal</button>
+          </form>
+
+        </Modal>
+
+
         {/*<ExampleControlSlot.Entry waitForOutlet>*/}
           {/*<strong>*/}
             {/*Click an event to see more info, or drag the mouse over the calendar*/}

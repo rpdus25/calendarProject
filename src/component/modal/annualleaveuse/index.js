@@ -1,22 +1,11 @@
 import React, { Component } from 'react';
-// import Modal from 'react-modal';
-import GotoWork from './GotoWork';
-import WorkTimeChange from './WorkTimeChange';
-import DefaultWorkTimeChange from './DefaultWorkTimeChange';
 import AnnualLeaveUse from './AnnualLeaveUse';
-import AnnualManagement from './AnnualManagement';
+import '../modal.css';
 
-import './modal.css';
-
-const MODAL_A = 'modal_a';
-const MODAL_B = 'modal_b';
-const MODAL_C = 'modal_c';
 const MODAL_D = 'modal_d';
-const MODAL_E = 'modal_e';
-
 const DEFAULT_TITLE = 'Default title';
 
-class SimpleUsage extends Component {
+class AnnualLeaveUseModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,33 +55,6 @@ class SimpleUsage extends Component {
 
     return (
       <div>
-        <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_A)}>출근</button>
-        <GotoWork
-          title={this.state.title1}
-          isOpen={currentModal == MODAL_A}
-          onAfterOpen={this.handleOnAfterOpenModal}
-          onRequestClose={this.handleModalCloseRequest}
-          askToClose={this.toggleModal(MODAL_A)}
-          onChangeInput={this.handleInputChange} />
-
-        <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_B)}>기본 근무 시간 변경</button>
-        <DefaultWorkTimeChange
-          title={this.state.title1}
-          isOpen={currentModal == MODAL_B}
-          onAfterOpen={this.handleOnAfterOpenModal}
-          onRequestClose={this.handleModalCloseRequest}
-          askToClose={this.toggleModal(MODAL_B)}
-        />
-
-        <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_C)}>근무 시간 변경</button>
-        <WorkTimeChange
-          title={this.state.title1}
-          isOpen={currentModal == MODAL_C}
-          onAfterOpen={this.handleOnAfterOpenModal}
-          onRequestClose={this.handleModalCloseRequest}
-          askToClose={this.toggleModal(MODAL_C)}
-        />
-
         <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_D)}>연차 사용</button>
         <AnnualLeaveUse
           title={this.state.title1}
@@ -101,20 +63,6 @@ class SimpleUsage extends Component {
           onRequestClose={this.handleModalCloseRequest}
           askToClose={this.toggleModal(MODAL_D)}
         />
-
-        <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_E)}>연차 관리</button>
-        <AnnualManagement
-          title={this.state.title1}
-          isOpen={currentModal == MODAL_E}
-          onAfterOpen={this.handleOnAfterOpenModal}
-          onRequestClose={this.handleModalCloseRequest}
-          askToClose={this.toggleModal(MODAL_E)}
-        />
-
-
-
-
-
 
         {/*<Modal*/}
           {/*style={{*/}
@@ -186,5 +134,5 @@ class SimpleUsage extends Component {
 
 export default {
   // label: "Working with one modal at a time.",
-  app: SimpleUsage
+  app: AnnualLeaveUseModal
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import './modal.css'
+import '../modal.css'
 
 export default props => {
   const {
@@ -11,31 +11,12 @@ export default props => {
   return (
     <Modal
       style={{
-        // overlay: {
-        //   position: 'fixed',
-        //   top: 0,
-        //   left: 0,
-        //   right: 0,
-        //   bottom: 0,
-        //   display: 'flex',
-        //   justifyContent: 'center',
-        //   alignItems: 'center',
-        //   backgroundColor: 'rgba(0, 0, 0, 0.75)'
-        // },
         content: {
-          position: 'static',
           width:'400px',
-          height:'300px',
-          margin:'0 auto',
-          background: '#fff',
-          overflow: 'auto',
-          WebkitOverflowScrolling: 'touch',
-          borderRadius: '4px',
-          outline: 'none',
-          padding: '20px'
+          height:'300px'
         }
       }}
-      contentLabel="modalC"
+      contentLabel="modalB"
       closeTimeoutMS={150}
       isOpen={isOpen}
       onAfterOpen={onAfterOpen}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Calenda.css';
 import Modal from 'react-modal';
-import MonthChange from '../../component/modal/MonthChange'
+import MonthChange from '../../component/modal/monthchange/MonthChange'
 
 
 

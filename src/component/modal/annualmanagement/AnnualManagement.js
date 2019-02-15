@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import './modal.css'
+import '../modal.css'
 
 export default props => {
   const {

@@ -284,3 +284,10 @@ label {
 .rbc-date-cell {
     text-align: left !important;
 }
+
+/* 버튼 정렬 */
+.modal-wrap .modal-inner {
+    display: inline-block;
+    vertical-align: middle;
+    padding:5px;
+}
