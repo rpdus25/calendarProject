@@ -1,22 +1,11 @@
 import React, { Component } from 'react';
-// import Modal from 'react-modal';
-import GotoWork from '../gotowork/GotoWork';
 import WorkTimeChange from '../worktimechange/WorkTimeChange';
-import DefaultWorkTimeChange from '../defaultworktimechage/DefaultWorkTimeChange';
-import AnnualLeaveUse from './AnnualLeaveUse';
-import AnnualManagement from '../annualmanagement/AnnualManagement';
-
 import '../modal.css';
 
-const MODAL_A = 'modal_a';
-const MODAL_B = 'modal_b';
 const MODAL_C = 'modal_c';
-const MODAL_D = 'modal_d';
-const MODAL_E = 'modal_e';
-
 const DEFAULT_TITLE = 'Default title';
 
-class SimpleUsage extends Component {
+class WorkTimeChangeModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,56 +55,16 @@ class SimpleUsage extends Component {
 
     return (
       <div>
-        <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_A)}>출근</button>
-        <GotoWork
+        <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_C)}>근무 시간 변경</button>
+        <WorkTimeChange
           title={this.state.title1}
-          isOpen={currentModal == MODAL_A}
+          isOpen={currentModal == MODAL_C}
           onAfterOpen={this.handleOnAfterOpenModal}
           onRequestClose={this.handleModalCloseRequest}
-          askToClose={this.toggleModal(MODAL_A)}
-          onChangeInput={this.handleInputChange} />
+          askToClose={this.toggleModal(MODAL_C)}
+        />
 
-        <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_B)}>기본 근무 시간 변경</button>
-        {/*<DefaultWorkTimeChange*/}
-          {/*title={this.state.title1}*/}
-          {/*isOpen={currentModal == MODAL_B}*/}
-          {/*onAfterOpen={this.handleOnAfterOpenModal}*/}
-          {/*onRequestClose={this.handleModalCloseRequest}*/}
-          {/*askToClose={this.toggleModal(MODAL_B)}*/}
-        {/*/>*/}
-
-        {/*<button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_C)}>근무 시간 변경</button>*/}
-        {/*<WorkTimeChange*/}
-          {/*title={this.state.title1}*/}
-          {/*isOpen={currentModal == MODAL_C}*/}
-          {/*onAfterOpen={this.handleOnAfterOpenModal}*/}
-          {/*onRequestClose={this.handleModalCloseRequest}*/}
-          {/*askToClose={this.toggleModal(MODAL_C)}*/}
-        {/*/>*/}
-
-        {/*<button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_D)}>연차 사용</button>*/}
-        {/*<AnnualLeaveUse*/}
-          {/*title={this.state.title1}*/}
-          {/*isOpen={currentModal == MODAL_D}*/}
-          {/*onAfterOpen={this.handleOnAfterOpenModal}*/}
-          {/*onRequestClose={this.handleModalCloseRequest}*/}
-          {/*askToClose={this.toggleModal(MODAL_D)}*/}
-        {/*/>*/}
-
-        {/*<button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_E)}>연차 관리</button>*/}
-        {/*<AnnualManagement*/}
-          {/*title={this.state.title1}*/}
-          {/*isOpen={currentModal == MODAL_E}*/}
-          {/*onAfterOpen={this.handleOnAfterOpenModal}*/}
-          {/*onRequestClose={this.handleModalCloseRequest}*/}
-          {/*askToClose={this.toggleModal(MODAL_E)}*/}
-        {/*/>*/}
-
-
-
-
-
-
+        {/* 그냥 모달로 추가했을 때 수정 */}
         {/*<Modal*/}
           {/*style={{*/}
             {/*overlay: {*/}
@@ -184,70 +133,7 @@ class SimpleUsage extends Component {
   }
 }
 
-class SimpleUsage2 extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title1: DEFAULT_TITLE,
-      currentModal: null
-    };
-  }
-
-  toggleModal = key => event => {
-    event.preventDefault();
-    if (this.state.currentModal) {
-      this.handleModalCloseRequest();
-      return;
-    }
-
-    this.setState({
-      ...this.state,
-      currentModal: key,
-      title1: DEFAULT_TITLE
-    });
-  }
-
-  handleModalCloseRequest = () => {
-    // opportunity to validate something and keep the modal open even if it
-    // requested to be closed
-    this.setState({
-      ...this.state,
-      currentModal: null
-    });
-  }
-
-  handleInputChange = e => {
-    let text = e.target.value;
-    if (text == '') {
-      text = DEFAULT_TITLE;
-    }
-    this.setState({ ...this.state, title1: text });
-  }
-
-  handleOnAfterOpenModal = () => {
-    // when ready, we can access the available refs.
-    this.heading && (this.heading.style.color = '#F00');
-  }
-
-  render() {
-    const { currentModal } = this.state;
-
-    return (
-      <div>
-        <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_B)}>기본 근무 시간 변경</button>
-        <DefaultWorkTimeChange
-          title={this.state.title1}
-          isOpen={currentModal == MODAL_B}
-          onAfterOpen={this.handleOnAfterOpenModal}
-          onRequestClose={this.handleModalCloseRequest}
-          askToClose={this.toggleModal(MODAL_B)}
-        />
-      </div>
-    );
-  }
-}
-
 export default {
   // label: "Working with one modal at a time.",
-  app: SimpleUsage
+  app: WorkTimeChangeModal
 };
