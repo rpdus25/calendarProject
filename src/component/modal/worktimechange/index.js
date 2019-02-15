@@ -3,13 +3,11 @@ import WorkTimeChange from '../worktimechange/WorkTimeChange';
 import '../modal.css';
 
 const MODAL_C = 'modal_c';
-const DEFAULT_TITLE = 'Default title';
 
-class WorkTimeChangeModal extends Component {
+class SimpleUsage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title1: DEFAULT_TITLE,
       currentModal: null
     };
   }
@@ -23,8 +21,7 @@ class WorkTimeChangeModal extends Component {
 
     this.setState({
       ...this.state,
-      currentModal: key,
-      title1: DEFAULT_TITLE
+      currentModal: key
     });
   }
 
@@ -39,10 +36,7 @@ class WorkTimeChangeModal extends Component {
 
   handleInputChange = e => {
     let text = e.target.value;
-    if (text == '') {
-      text = DEFAULT_TITLE;
-    }
-    this.setState({ ...this.state, title1: text });
+    this.setState({ ...this.state});
   }
 
   handleOnAfterOpenModal = () => {
@@ -57,7 +51,6 @@ class WorkTimeChangeModal extends Component {
       <div>
         <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_C)}>근무 시간 변경</button>
         <WorkTimeChange
-          title={this.state.title1}
           isOpen={currentModal == MODAL_C}
           onAfterOpen={this.handleOnAfterOpenModal}
           onRequestClose={this.handleModalCloseRequest}
@@ -135,5 +128,5 @@ class WorkTimeChangeModal extends Component {
 
 export default {
   // label: "Working with one modal at a time.",
-  app: WorkTimeChangeModal
+  app: SimpleUsage
 };

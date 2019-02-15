@@ -1,16 +1,13 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
+// import { render } from "react-dom";
 import events from "../events";
 import BigCalendar from "react-big-calendar";
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
-import ExampleControlSlot from '../ExampleControlSlot'
-
-
-
+import MonthChange from "../../component/modal/monthchange/MonthChange"
 
 
 // Setup the localizer by providing the moment (or globalize) Object
@@ -18,18 +15,21 @@ import ExampleControlSlot from '../ExampleControlSlot'
 const localizer = BigCalendar.momentLocalizer(moment)
 const DraggableCalendar = withDragAndDrop(BigCalendar)
 const DEFAULT_TITLE = 'Default title';
+const MODAL_A = 'modal_a';
 
 const propTypes = {}
 
 class Calenda2 extends Component {
-  constructor(...args) {
-    super(...args)
+  // constructor(props) {
+  //   super(props);
+  constructor(props) {
+    super(props);
     this.state = {
       events:events,
       showModal: false,
       title: DEFAULT_TITLE,
+      currentModal: null
     };
-
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
@@ -43,7 +43,12 @@ class Calenda2 extends Component {
   }
 
   handleSelect = ({ start, end }) => {
-    this.setState({ showModal: true });
+    this.setState({
+      showModal: true,
+      isOpen :"MODAL_A"
+    });
+
+
     // const title = window.prompt('New Event name');
     if ({showModal: false})
       this.setState({
@@ -106,37 +111,48 @@ class Calenda2 extends Component {
     this.setState({ ...this.state, title1: text });
   }
 
+  toggleModal = key => event => {
+    event.preventDefault();
+    console.log("toggleModal");
+    if (this.state.currentModal) {
+      this.handleModalCloseRequest();
+      return;
+    }
+
+    this.setState({
+      ...this.state,
+      currentModal: key,
+      title1: DEFAULT_TITLE
+    });
+  }
+
+  handleModalCloseRequest = () => {
+    // opportunity to validate something and keep the modal open even if it
+    // requested to be closed
+    this.setState({
+      ...this.state,
+      currentModal: null
+    });
+  }
+
+  handleInputChange = e => {
+    let text = e.target.value;
+    if (text == '') {
+      text = DEFAULT_TITLE;
+    }
+    this.setState({ ...this.state, title1: text });
+  }
+
+  handleOnAfterOpenModal = () => {
+    // when ready, we can access the available refs.
+    this.heading && (this.heading.style.color = '#F00');
+  }
+
   render() {
+    const { currentModal } = this.state;
+
     return (
       <div style={{ height:"calc(100vh - 200px)" }}>
-        <Modal
-          // save={this.save}
-          isOpen={this.state.showModal}
-          contentLabel="Minimal Modal Example"
-          onRequestClose={this.handleCloseModal}
-        >
-          <form onSubmit={this.handleSubmit}>
-            <input
-
-              type="text"
-              placeholder="이름"
-              value={this.state.title}
-              onChange={this.handleInputChange}
-              name="name"
-            />
-            <button type="submit">등록</button>
-            <button onClick={this.handleCloseModal}>Close Modal</button>
-          </form>
-
-        </Modal>
-
-
-        {/*<ExampleControlSlot.Entry waitForOutlet>*/}
-          {/*<strong>*/}
-            {/*Click an event to see more info, or drag the mouse over the calendar*/}
-            {/*to select a date/time range.*/}
-          {/*</strong>*/}
-        {/*</ExampleControlSlot.Entry>*/}
         <BigCalendar
           popup
           selectable
@@ -148,6 +164,18 @@ class Calenda2 extends Component {
           onSelectEvent={event => alert(event.title)}
           onSelectSlot={this.handleSelect}
         />
+
+        <MonthChange
+          title={this.state.title1}
+          isOpen={this.state.showModal}
+          onAfterOpen={this.handleOnAfterOpenModal}
+          onRequestClose={this.handleCloseModal}
+          askToClose={this.handleCloseModal}
+          onChangeInput={this.handleInputChange}
+          // onRequestClose={this.handleModalCloseRequest}
+
+        />
+
       </div>
     )
   }

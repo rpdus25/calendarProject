@@ -4,7 +4,7 @@ import '../modal.css'
 
 export default props => {
   const {
-    title, isOpen, askToClose,
+    isOpen, askToClose,
     onAfterOpen, onRequestClose, onChangeInput
   } = props;
 
@@ -40,16 +40,14 @@ export default props => {
       isOpen={isOpen}
       onAfterOpen={onAfterOpen}
       onRequestClose={onRequestClose}>
-      {/*<h1>{title}</h1>*/}
-      <h1>기본 근무 시간 변경</h1>
+      <h1>근무 시간 변경</h1>
+      <button onClick={askToClose}>닫기</button>
       <div>
         <dl className="list-wrap">
-          <dt>기본 근무 시간:</dt>
+          <dt>날짜 :</dt>
           <dd>
             <i className="material-icons">access_time</i>
-            <span>08:00 ~ </span>
-            <i className="material-icons">access_time</i>
-            <span>17:00</span>
+            <input type="date"/>
           </dd>
         </dl>
         <dl className="list-wrap">
@@ -65,7 +63,7 @@ export default props => {
         </dl>
         <button className="btn btn-primary">저장</button>
       </div>
-      <button onClick={askToClose}>닫기</button>
+
     </Modal>
   );
 }

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import AnnualManagement from '../annualmanagement/AnnualManagement';
-import '../modal.css';
-
 
 const MODAL_E = 'modal_e';
 const DEFAULT_TITLE = 'Default title';

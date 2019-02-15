@@ -21,6 +21,7 @@ export default props => {
       onAfterOpen={onAfterOpen}
       onRequestClose={onRequestClose}>
       <h1>test</h1>
+      <button onClick={askToClose}>닫기</button>
       <div className="flex-container" tabIndex="0" role="document" style={{height:"80%"}}>
         <div className="flex-row">
           <button className="flex-item">2011</button>
