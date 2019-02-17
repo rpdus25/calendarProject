@@ -7,16 +7,12 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
-import MonthChange from "../../component/modal/monthchange/MonthChange"
-
+import AnnualManagement from "../../component/modal/annualmanagement/AnnualManagement"
 
 // Setup the localizer by providing the moment (or globalize) Object
-// to the correct localizer.
-const localizer = BigCalendar.momentLocalizer(moment)
-const DraggableCalendar = withDragAndDrop(BigCalendar)
-const DEFAULT_TITLE = 'Default title';
-const MODAL_A = 'modal_a';
-
+const localizer = BigCalendar.momentLocalizer(moment);
+const DraggableCalendar = withDragAndDrop(BigCalendar);
+const DEFAULT_TITLE = '연차관리';
 const propTypes = {}
 
 class Calenda2 extends Component {
@@ -34,81 +30,47 @@ class Calenda2 extends Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  handleOpenModal () {
-    this.setState({ showModal: true });
+  handleOpenModal (event) {
+    this.setState({
+      showModal: true,
+      title:event.title
+    });
   }
 
   handleCloseModal () {
-    this.setState({ showModal: false });
+    this.setState({
+      showModal: false,
+      title: DEFAULT_TITLE,
+    });
   }
 
   handleSelect = ({ start, end }) => {
-    this.setState({
-      showModal: true,
-      isOpen :"MODAL_A"
-    });
-
-
+    const title = "";
     // const title = window.prompt('New Event name');
-    if ({showModal: false})
+    if ({showModal: true})
       this.setState({
+        title: DEFAULT_TITLE,
+        showModal: true,
         events: [
           ...this.state.events,
           {
             start,
             end,
-            // title,
+            title,
           },
         ],
       })
   }
-
-  handleChange = (e) => {
-    this.setState({
-      input: e.target.value // input 의 다음 바뀔 값
-    });
-  }
-
-  handleCreate = () => {
-    const { input, todos } = this.state;
-    this.setState({
-      input: '', // 인풋 비우고
-      // concat 을 사용하여 배열에 추가
-      todos: todos.concat({
-        id: this.id++,
-        text: input,
-        checked: false
-      })
-    });
-  }
-
-  handleKeyPress = (e) => {
-    // 눌려진 키가 Enter 면 handleCreate 호출
-    if(e.key === 'Enter') {
-      this.handleCreate();
-    }
-  }
-
-  handleSubmit = (e) => {
-    console.log('submitted');
-
-    // 페이지 리로딩 방지
-    e.preventDefault();
-    // 상태값을 onCreate 를 통하여 부모에게 전달
-    this.props.save(this.state);
-    // 상태 초기화
-    this.setState({
-      title: '',
-      phone: ''
-    })
-  };
 
   handleInputChange = e => {
     let text = e.target.value;
     if (text == '') {
       text = DEFAULT_TITLE;
     }
-    this.setState({ ...this.state, title1: text });
+    this.setState({
+      ...this.state,
+      title: text
+    });
   }
 
   toggleModal = key => event => {
@@ -122,25 +84,8 @@ class Calenda2 extends Component {
     this.setState({
       ...this.state,
       currentModal: key,
-      title1: DEFAULT_TITLE
+      title: DEFAULT_TITLE
     });
-  }
-
-  handleModalCloseRequest = () => {
-    // opportunity to validate something and keep the modal open even if it
-    // requested to be closed
-    this.setState({
-      ...this.state,
-      currentModal: null
-    });
-  }
-
-  handleInputChange = e => {
-    let text = e.target.value;
-    if (text == '') {
-      text = DEFAULT_TITLE;
-    }
-    this.setState({ ...this.state, title1: text });
   }
 
   handleOnAfterOpenModal = () => {
@@ -161,19 +106,21 @@ class Calenda2 extends Component {
           defaultView={BigCalendar.Views.MONTH}
           scrollToTime={new Date(1970, 1, 1, 6)}
           defaultDate={new Date()}
-          onSelectEvent={event => alert(event.title)}
+          onSelectEvent={
+            this.handleOpenModal
+            // event => alert(event.title)
+          }
           onSelectSlot={this.handleSelect}
         />
 
-        <MonthChange
-          title={this.state.title1}
+        <AnnualManagement
+          title={this.state.title}
           isOpen={this.state.showModal}
           onAfterOpen={this.handleOnAfterOpenModal}
           onRequestClose={this.handleCloseModal}
           askToClose={this.handleCloseModal}
           onChangeInput={this.handleInputChange}
           // onRequestClose={this.handleModalCloseRequest}
-
         />
 
       </div>

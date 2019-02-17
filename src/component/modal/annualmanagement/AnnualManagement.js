@@ -21,8 +21,7 @@ export default props => {
       isOpen={isOpen}
       onAfterOpen={onAfterOpen}
       onRequestClose={onRequestClose}>
-      {/*<h1>{title}</h1>*/}
-      <h1>연차 관리</h1>
+      <h1>{title}</h1>
       <button onClick={askToClose}>닫기</button>
       <div>
         <div className="list-wrap">
@@ -31,7 +30,7 @@ export default props => {
           <button className="btn btn-primary">외출</button>
         </div>
         <div className="list-wrap">
-          <textarea name="" id="" placeholder="내용을 입력하세요"></textarea>
+          <textarea name="" id="ddd"  placeholder="내용을 입력하세요" onChange={onChangeInput}></textarea>
         </div>
         <div className="list-wrap">
           <i className="material-icons">date_range</i>
@@ -39,8 +38,6 @@ export default props => {
           -
           <i className="material-icons">date_range</i>
           <input type="date"/>
-
-
           <i className="material-icons">
             access_time
           </i>
