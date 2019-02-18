@@ -8,6 +8,7 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import AnnualManagement from "../../component/modal/annualmanagement/AnnualManagement"
+import isAfter from "date-fns/isAfter";
 
 // Setup the localizer by providing the moment (or globalize) Object
 const localizer = BigCalendar.momentLocalizer(moment);
@@ -49,23 +50,26 @@ class Calenda2 extends Component {
       currentModal: null,
       end:events.end,
       desc:events.desc,
-      start: events.start
+      startDate:events.start,
+      endDate:events.end,
+      selected: 'radio-1'
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleChange2 = this.handleChange2.bind(this);
+    this.handleChangeStart = this.handleChangeStart.bind(this);
+    this.handleChangeEnd = this.handleChangeEnd.bind(this);
+    this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
-  handleOpenModal (event) {
-    var dd = [];
-    dd[0] = event.title;
-    dd[1] = event.start;
+  handleOpenModal (e) {
     this.setState({
       showModal: true,
-      title:event.title,
-      desc:event.desc,
-      startDate:event.start,
-      endDate:event.end,
+      title:e.title,
+      desc:e.desc,
+      startDate:e.start,
+      endDate:e.end,
+      selectedOption:'option1',
+      isShow:false
     });
   }
 
@@ -138,12 +142,29 @@ class Calenda2 extends Component {
   }
 
 
-  handleChange2 (date) {
+  // 데이트피커
+  handleChange = ({ startDate, endDate }) => {
+    startDate = startDate || this.state.startDate;
+    endDate = endDate || this.state.endDate;
+
+    if (isAfter(startDate, endDate)) {
+      endDate = startDate;
+    }
+
+    this.setState({ startDate, endDate });
+  };
+
+  handleChangeStart = startDate => this.handleChange({ startDate });
+  handleChangeEnd = endDate => this.handleChange({ endDate });
+
+  // 라디오 버튼 체인지
+  handleOptionChange = (e) => {
     this.setState({
-      startDate: date,
-      endDate: date,
+      selected: e.target.value
     });
   }
+
+
 
 
 
@@ -186,7 +207,10 @@ class Calenda2 extends Component {
           onRequestClose={this.handleCloseModal}
           askToClose={this.handleCloseModal}
           onChangeInput={this.handleInputChange}
-          onChangeInput2={this.handleChange2}
+          onChangeInputStart={this.handleChangeStart}
+          onChangeInputEnd={this.handleChangeEnd}
+          onChangeHandleOption={this.handleOptionChange}
+          selected={this.state.selected}
           // onRequestClose={this.handleModalCloseRequest}
         />
 

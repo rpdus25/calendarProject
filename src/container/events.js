@@ -7,9 +7,9 @@ export default [
     desc:"배가 아파서 연차를 썻다"
   },
   {
-    'title': 'Long Event',
-    'start': new Date(2019, 2, 7),
-    'end': new Date(2019, 2, 10)
+    'title': "연차",
+    'start': new Date(2019, 1, 7),
+    'end': new Date(2019, 1, 10)
   },
 
   {

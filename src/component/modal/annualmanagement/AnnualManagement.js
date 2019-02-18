@@ -9,8 +9,8 @@ export default props => {
 
 
   const {
-    title, isOpen, askToClose, start, end, desc, startDate, endDate,
-    onAfterOpen, onRequestClose, onChangeInput, onChangeInput2
+    title, isOpen, askToClose, desc, startDate, endDate, onChangeHandleOption, selected,
+    onAfterOpen, onRequestClose, onChangeInput, onChangeInputStart, onChangeInputEnd,
   } = props;
 
   return (
@@ -27,31 +27,73 @@ export default props => {
       onAfterOpen={onAfterOpen}
       onRequestClose={onRequestClose}>
       <h1>{title}</h1>
-      <h2>{start}</h2>
-      <h3>{end}</h3>
-      <h4>{desc}</h4>
       <button onClick={askToClose}>닫기</button>
       <div>
         <div className="list-wrap">
-          <button className="btn btn-primary">연차</button>
-          <button className="btn btn-primary">반차</button>
-          <button className="btn btn-primary">외출</button>
+          <label for="radio-1" className="btn btn-primary">
+            <input
+              type='radio'
+              id='radio-1'
+              name='myRadio'
+              value='radio-1'
+              checked={selected === 'radio-1'}
+              onChange={onChangeHandleOption}
+            />
+            연차
+          </label>
+          <label for="radio-2" className="btn btn-primary">
+            <input
+              type='radio'
+              id='radio-2'
+              name='myRadio'
+              value='radio-2'
+              checked={selected === 'radio-2'}
+              onChange={onChangeHandleOption}
+            />
+            반차
+          </label>
+          <label htmlFor="radio-3" className="btn btn-primary">
+            <input
+              type='radio'
+              id='radio-3'
+              name='myRadio'
+              value='radio-3'
+              checked={selected === 'radio-3'}
+              onChange={onChangeHandleOption}
+            />
+            외출
+          </label>
         </div>
         <div className="list-wrap">
-          <textarea name="" id="ddd"  placeholder="내용을 입력하세요" onChange={onChangeInput}></textarea>
+          <textarea
+            name=""
+            id="ddd"
+            value={desc}
+            placeholder="내용을 입력하세요"
+            onChange={onChangeInput}
+            style={{width:"100%", display:"block"}}
+          />
         </div>
         <div className="list-wrap">
           <i className="material-icons">date_range</i>
           <DatePicker
+            dateFormat="yyyy/MM/dd"
             selected={startDate}
-            onChange={onChangeInput2}
+            selectsStart
+            startDate={startDate}
+            endDate={endDate}
+            onChange={onChangeInputStart}
           />
           -
           <i className="material-icons">date_range</i>
 
           <DatePicker
+            dateFormat="yyyy/MM/dd"
             selected={endDate}
-            onChange={onChangeInput2}
+            selectsEnd
+            startDate={startDate}
+            endDate={endDate}
+            onChange={onChangeInputEnd}
           />
 
 
