@@ -15,6 +15,28 @@ const DraggableCalendar = withDragAndDrop(BigCalendar);
 const DEFAULT_TITLE = '연차관리';
 const propTypes = {}
 
+
+
+
+/*Agenda Rendering*/
+//Outside the class
+// function Event({ event }) {
+//   return (
+//     <span>
+//       <strong>
+//       {event.title}
+//       </strong>
+//       { event.desc && (':  ' + event.desc)}
+//     </span>
+//   )
+// }
+//
+// function EventAgenda({ event }) {
+//   return <span>
+//     <em style={{ color: 'magenta'}}>{event.title}</em><p>{ event.desc }</p>
+//       </span>
+// }
+
 class Calenda2 extends Component {
   // constructor(props) {
   //   super(props);
@@ -24,23 +46,32 @@ class Calenda2 extends Component {
       events:events,
       showModal: false,
       title: DEFAULT_TITLE,
-      currentModal: null
+      currentModal: null,
+      end:events.end,
+      desc:events.desc,
+      start: events.start
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleChange2 = this.handleChange2.bind(this);
   }
 
   handleOpenModal (event) {
+    var dd = [];
+    dd[0] = event.title;
+    dd[1] = event.start;
     this.setState({
       showModal: true,
-      title:event.title
+      title:event.title,
+      desc:event.desc,
+      startDate:event.start,
+      endDate:event.end,
     });
   }
 
   handleCloseModal () {
     this.setState({
-      showModal: false,
-      title: DEFAULT_TITLE,
+      showModal: false
     });
   }
 
@@ -54,9 +85,9 @@ class Calenda2 extends Component {
         events: [
           ...this.state.events,
           {
-            start,
-            end,
             title,
+            start,
+            end
           },
         ],
       })
@@ -93,6 +124,29 @@ class Calenda2 extends Component {
     this.heading && (this.heading.style.color = '#F00');
   }
 
+  /* When you choose a particular slot on the calendar */
+  onSlotChange(slotInfo) {
+    var startDate = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DDm:ss");
+    var endDate = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DDm:ss");
+    console.log('startTimetartDate); //shows the start time chosen');
+    console.log('endTimendDate); //shows the end time chosen');
+  }
+
+  /* When you click on an already booked slot */
+  onEventClick(event) {
+    console.log(event) //Shows the event details provided while booking
+  }
+
+
+  handleChange2 (date) {
+    this.setState({
+      startDate: date,
+      endDate: date,
+    });
+  }
+
+
+
   render() {
     const { currentModal } = this.state;
 
@@ -103,6 +157,7 @@ class Calenda2 extends Component {
           selectable
           localizer={localizer}
           events={this.state.events}
+          // views={allViews}
           defaultView={BigCalendar.Views.MONTH}
           scrollToTime={new Date(1970, 1, 1, 6)}
           defaultDate={new Date()}
@@ -111,15 +166,27 @@ class Calenda2 extends Component {
             // event => alert(event.title)
           }
           onSelectSlot={this.handleSelect}
+          // components={{
+          //   event: Event,
+          //   agenda: {
+          //     event: EventAgenda
+          //   }
+          // }}
+
         />
 
         <AnnualManagement
           title={this.state.title}
+          desc={this.state.desc}
+          startDate = {this.state.startDate}
+          endDate = {this.state.endDate}
           isOpen={this.state.showModal}
+          events={this.state.events}
           onAfterOpen={this.handleOnAfterOpenModal}
           onRequestClose={this.handleCloseModal}
           askToClose={this.handleCloseModal}
           onChangeInput={this.handleInputChange}
+          onChangeInput2={this.handleChange2}
           // onRequestClose={this.handleModalCloseRequest}
         />
 

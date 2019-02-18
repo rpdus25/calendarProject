@@ -1,11 +1,16 @@
 import React from 'react';
 import Modal from 'react-modal';
 import '../modal.css'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 export default props => {
+
+
   const {
-    title, isOpen, askToClose,
-    onAfterOpen, onRequestClose, onChangeInput
+    title, isOpen, askToClose, start, end, desc, startDate, endDate,
+    onAfterOpen, onRequestClose, onChangeInput, onChangeInput2
   } = props;
 
   return (
@@ -22,6 +27,9 @@ export default props => {
       onAfterOpen={onAfterOpen}
       onRequestClose={onRequestClose}>
       <h1>{title}</h1>
+      <h2>{start}</h2>
+      <h3>{end}</h3>
+      <h4>{desc}</h4>
       <button onClick={askToClose}>닫기</button>
       <div>
         <div className="list-wrap">
@@ -34,10 +42,21 @@ export default props => {
         </div>
         <div className="list-wrap">
           <i className="material-icons">date_range</i>
-          <input type="date"/>
+          <DatePicker
+            selected={startDate}
+            onChange={onChangeInput2}
+          />
           -
           <i className="material-icons">date_range</i>
-          <input type="date"/>
+
+          <DatePicker
+            selected={endDate}
+            onChange={onChangeInput2}
+          />
+
+
+
+
           <i className="material-icons">
             access_time
           </i>
