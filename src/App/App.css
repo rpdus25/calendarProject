@@ -291,3 +291,29 @@ label {
     vertical-align: middle;
     padding:5px;
 }
+
+/* 캘린더 색 수정 */
+.rbc-event.yellow {
+    background:#ffc000;
+}
+.rbc-event.blue {
+    background: #00b0f0;
+}
+.rbc-event.lightblue {
+    background: #cdeeff;
+}
+.rbc-event.purple {
+    background: #7030a0;
+}
+.rbc-event.green {
+    background: #00823b;
+}
+.rbc-event.red {
+    background: #ff0000;
+}
+.rbc-event.gray {
+    background: #808080;
+}
+.rbc-event.black {
+    background: #000;
+}

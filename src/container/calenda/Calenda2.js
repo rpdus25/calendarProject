@@ -187,52 +187,36 @@ class Calenda2 extends Component {
   // 이벤트마다 다른것
   eventStyleGetter = (event, start, end, isSelected) => {
     if(event.title === '연차') {
-      const backgroundColor = '#ffc000';
-      const style = {
-        backgroundColor: backgroundColor
-      };
       return {
-        style: style
+        className:"yellow"
       };
     } else if (event.title === '오전 반차') {
-      const backgroundColor = '#00b0f0';
-      const style = {
-        backgroundColor: backgroundColor
-      };
       return {
-        style: style
+        className:"blue"
       };
     } else if (event.title === '오후 반차') {
-      const backgroundColor = '#7030a0';
-      const style = {
-        backgroundColor: backgroundColor
-      };
       return {
-        style: style
+        className:"purple"
       };
     } else if (event.title === '출근') {
-      const backgroundColor = '#00823b';
-      const style = {
-        backgroundColor: backgroundColor
-      };
       return {
-        style: style
+        className:"green"
       };
     } else if (event.title === '무단결근') {
-      const backgroundColor = '#ff0000';
-      const style = {
-        backgroundColor: backgroundColor
-      };
       return {
-        style: style
+        className:"red"
       };
     } else if (event.title === '외출') {
-      const backgroundColor = '#808080';
-      const style = {
-        backgroundColor: backgroundColor
-      };
       return {
-        style: style
+        className:"gray"
+      };
+    } else if (event.title === '야근') {
+      return {
+        className:"lightblue"
+      };
+    } else if (event.title === '강제 야근') {
+      return {
+        className:"black"
       };
     }
     
