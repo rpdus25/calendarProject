@@ -3,7 +3,8 @@ import Modal from 'react-modal';
 import '../modal.css'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import events from "../../../container/events";
+import moment from "moment/moment";
 
 export default props => {
   const {
@@ -24,6 +25,7 @@ export default props => {
       isOpen={isOpen}
       onAfterOpen={onAfterOpen}
       onRequestClose={onRequestClose}>
+      <p>{moment(startDate).format('LL')}</p>
       <h1>{title}</h1>
       <button onClick={askToClose}>닫기</button>
       <div>
@@ -33,8 +35,8 @@ export default props => {
               type='radio'
               id='radio-1'
               name='myRadio'
-              value='radio-1'
-              checked={selected === 'radio-1'}
+              value='연차'
+              checked={selected === '연차'}
               onChange={onChangeHandleOption}
             />
             연차
@@ -44,8 +46,8 @@ export default props => {
               type='radio'
               id='radio-2'
               name='myRadio'
-              value='radio-2'
-              checked={selected === 'radio-2'}
+              value='반차'
+              checked={selected === '반차'}
               onChange={onChangeHandleOption}
             />
             반차
@@ -55,8 +57,8 @@ export default props => {
               type='radio'
               id='radio-3'
               name='myRadio'
-              value='radio-3'
-              checked={selected === 'radio-3'}
+              value='외출'
+              checked={selected === '외출'}
               onChange={onChangeHandleOption}
             />
             외출
@@ -72,58 +74,83 @@ export default props => {
             style={{width:"100%", display:"block"}}
           />
         </div>
-        <div className="list-wrap">
-          <i className="material-icons">date_range</i>
-          <DatePicker
-            dateFormat="yyyy/MM/dd"
-            selected={startDate}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-            onChange={onChangeInputStart}
-          />
-          -
-          <i className="material-icons">date_range</i>
 
-          <DatePicker
-            dateFormat="yyyy/MM/dd"
-            selected={endDate}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            onChange={onChangeInputEnd}
-          />
+        <p>
+          {selected === '연차' ?
+            <div className="list-wrap">
+              <i className="material-icons">date_range</i>
+              <DatePicker
+                dateFormat="yyyy/MM/dd"
+                selected={startDate}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                onChange={onChangeInputStart}
+              />
+              -
+              <i className="material-icons">date_range</i>
+              <DatePicker
+                dateFormat="yyyy/MM/dd"
+                selected={endDate}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                onChange={onChangeInputEnd}
+              />
+              <button className="btn btn-primary">저장</button>
+            </div>
+            :
+            <div className="list-wrap">
+              <i className="material-icons">date_range</i>
+              <DatePicker
+                dateFormat="yyyy/MM/dd"
+                selected={startDate}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                onChange={onChangeInputStart}
+              />
+              -
+              <i className="material-icons">date_range</i>
+              <DatePicker
+                dateFormat="yyyy/MM/dd"
+                selected={endDate}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                onChange={onChangeInputEnd}
+              />
 
-          <i className="material-icons">
-            access_time
-          </i>
-          <DatePicker
-            selected={startDate}
-            onChange={onChangeInputStart}
-            showTimeSelect
-            showTimeSelectOnly
-            timeIntervals={15}
-            dateFormat="h:mm aa"
-            timeCaption="Time"
-          />
-          -
-          <i className="material-icons">
-            access_time
-          </i>
-          <DatePicker
-            selected={endDate}
-            onChange={onChangeInputEnd}
-            showTimeSelect
-            showTimeSelectOnly
-            timeIntervals={15}
-            dateFormat="h:mm aa"
-            timeCaption="Time"
-          />
-
-          <button className="btn btn-primary">저장</button>
-        </div>
+              <i className="material-icons">
+                access_time
+              </i>
+              <DatePicker
+                selected={startDate}
+                onChange={onChangeInputStart}
+                showTimeSelect
+                showTimeSelectOnly
+                timeIntervals={15}
+                dateFormat="h:mm aa"
+                timeCaption="Time"
+              />
+              -
+              <i className="material-icons">
+                access_time
+              </i>
+              <DatePicker
+                selected={endDate}
+                onChange={onChangeInputEnd}
+                showTimeSelect
+                showTimeSelectOnly
+                timeIntervals={15}
+                dateFormat="h:mm aa"
+                timeCaption="Time"
+              />
+              <button className="btn btn-primary">저장</button>
+            </div>
+          }
+        </p>
       </div>
-
     </Modal>
   );
 }

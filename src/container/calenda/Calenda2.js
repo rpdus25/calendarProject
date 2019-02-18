@@ -10,11 +10,30 @@ import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import AnnualManagement from "../../component/modal/annualmanagement/AnnualManagement"
 import isAfter from "date-fns/isAfter";
 
+
 // Setup the localizer by providing the moment (or globalize) Object
 const localizer = BigCalendar.momentLocalizer(moment);
 const DraggableCalendar = withDragAndDrop(BigCalendar);
 const DEFAULT_TITLE = '연차관리';
 const propTypes = {}
+
+
+moment.locale('ko');
+moment().format('LT');   // 오후 11시 42분
+moment().format('LTS');  // 오후 11시 42분 57초
+moment().format('L');    // 2016.10.11
+moment().format('l');    // 2016.10.11
+moment().format('LL');   // 2016년 10월 11일
+moment().format('ll');   // 2016년 10월 11일
+moment().format('LLL');  // 2016년 10월 11일 오후 11시 42분
+moment().format('lll');  // 2016년 10월 11일 오후 11시 42분
+moment().format('LLLL'); // 2016년 10월 11일 화요일 오후 11시 42분
+moment().format('llll'); // 2016년 10월 11일 화 오후 11시 42분
+
+
+
+
+
 
 /*Agenda Rendering*/
 //Outside the class
@@ -48,7 +67,7 @@ class Calenda2 extends Component {
       desc:events.desc,
       startDate:undefined,
       endDate:undefined,
-      selected: 'radio-1'
+      selected: '연차',
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -63,9 +82,7 @@ class Calenda2 extends Component {
       title:e.title,
       desc:e.desc,
       startDate:e.start,
-      endDate:e.end,
-      selectedOption:'option1',
-      isShow:false
+      endDate:e.end
     });
   }
 
@@ -97,14 +114,15 @@ class Calenda2 extends Component {
       })
   }
 
-  handleInputChange = e => {
-    let text = e.target.value;
-    if (text == '') {
-      text = DEFAULT_TITLE;
+  handleInputChange = (e) => {
+    if(e.target.value === '연차') {
+      this.setState({
+        isShow:true
+      });
     }
+
     this.setState({
-      ...this.state,
-      title: text
+      desc: e.target.value
     });
   }
 
@@ -164,8 +182,12 @@ class Calenda2 extends Component {
     });
   }
 
+
+
+
+
   render() {
-    const { currentModal } = this.state;
+    // const { currentModal } = this.state;
 
     return (
       <div style={{ height:"calc(100vh - 200px)" }}>
@@ -195,6 +217,7 @@ class Calenda2 extends Component {
         <AnnualManagement
           title={this.state.title}
           desc={this.state.desc}
+          start={this.state.start}
           startDate = {this.state.startDate}
           endDate = {this.state.endDate}
           isOpen={this.state.showModal}
@@ -207,6 +230,7 @@ class Calenda2 extends Component {
           onChangeInputEnd={this.handleChangeEnd}
           onChangeHandleOption={this.handleOptionChange}
           selected={this.state.selected}
+          isShow={this.toggle}
           // onRequestClose={this.handleModalCloseRequest}
         />
 
@@ -214,20 +238,6 @@ class Calenda2 extends Component {
     )
   }
 }
-
-// Calenda2.propTypes = propTypes
-
-// moment.locale('ko');
-// moment().format('LT');   // 오후 11시 42분
-// moment().format('LTS');  // 오후 11시 42분 57초
-// moment().format('L');    // 2016.10.11
-// moment().format('l');    // 2016.10.11
-// moment().format('LL');   // 2016년 10월 11일
-// moment().format('ll');   // 2016년 10월 11일
-// moment().format('LLL');  // 2016년 10월 11일 오후 11시 42분
-// moment().format('lll');  // 2016년 10월 11일 오후 11시 42분
-// moment().format('LLLL'); // 2016년 10월 11일 화요일 오후 11시 42분
-// moment().format('llll'); // 2016년 10월 11일 화 오후 11시 42분
 
 //
 // const { onDrillDown } = this.props;
