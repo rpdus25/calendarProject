@@ -1,10 +1,10 @@
 export default [
   {
-    'title': '연차',
+    'title': '반차',
     'allDay': true,
     'start': new Date(2019, 1, 1),
     'end': new Date(2019, 1, 1),
-    desc:"배가 아파서 연차를 썻다"
+    desc:"배가 아파서 반차를 썻다"
   },
   {
     'title': "연차",

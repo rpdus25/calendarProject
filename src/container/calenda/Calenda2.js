@@ -16,9 +16,6 @@ const DraggableCalendar = withDragAndDrop(BigCalendar);
 const DEFAULT_TITLE = '연차관리';
 const propTypes = {}
 
-
-
-
 /*Agenda Rendering*/
 //Outside the class
 // function Event({ event }) {
@@ -48,10 +45,9 @@ class Calenda2 extends Component {
       showModal: false,
       title: DEFAULT_TITLE,
       currentModal: null,
-      end:events.end,
       desc:events.desc,
-      startDate:events.start,
-      endDate:events.end,
+      startDate:undefined,
+      endDate:undefined,
       selected: 'radio-1'
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -81,10 +77,14 @@ class Calenda2 extends Component {
 
   handleSelect = ({ start, end }) => {
     const title = "";
+
+    const startDate = start;
     // const title = window.prompt('New Event name');
     if ({showModal: true})
       this.setState({
         title: DEFAULT_TITLE,
+        startDate: start,
+        endDate: end,
         showModal: true,
         events: [
           ...this.state.events,
@@ -163,10 +163,6 @@ class Calenda2 extends Component {
       selected: e.target.value
     });
   }
-
-
-
-
 
   render() {
     const { currentModal } = this.state;

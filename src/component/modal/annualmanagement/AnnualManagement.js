@@ -6,11 +6,9 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 export default props => {
-
-
   const {
     title, isOpen, askToClose, desc, startDate, endDate, onChangeHandleOption, selected,
-    onAfterOpen, onRequestClose, onChangeInput, onChangeInputStart, onChangeInputEnd,
+    onAfterOpen, onRequestClose, onChangeInput, onChangeInputStart, onChangeInputEnd
   } = props;
 
   return (
@@ -30,7 +28,7 @@ export default props => {
       <button onClick={askToClose}>닫기</button>
       <div>
         <div className="list-wrap">
-          <label for="radio-1" className="btn btn-primary">
+          <label htmlFor="radio-1" className="btn btn-primary">
             <input
               type='radio'
               id='radio-1'
@@ -41,7 +39,7 @@ export default props => {
             />
             연차
           </label>
-          <label for="radio-2" className="btn btn-primary">
+          <label htmlFor="radio-2" className="btn btn-primary">
             <input
               type='radio'
               id='radio-2'
@@ -96,18 +94,31 @@ export default props => {
             onChange={onChangeInputEnd}
           />
 
-
-
-
           <i className="material-icons">
             access_time
           </i>
-          <input type="time"/>
+          <DatePicker
+            selected={startDate}
+            onChange={onChangeInputStart}
+            showTimeSelect
+            showTimeSelectOnly
+            timeIntervals={15}
+            dateFormat="h:mm aa"
+            timeCaption="Time"
+          />
           -
           <i className="material-icons">
             access_time
           </i>
-          <input type="time"/>
+          <DatePicker
+            selected={endDate}
+            onChange={onChangeInputEnd}
+            showTimeSelect
+            showTimeSelectOnly
+            timeIntervals={15}
+            dateFormat="h:mm aa"
+            timeCaption="Time"
+          />
 
           <button className="btn btn-primary">저장</button>
         </div>
