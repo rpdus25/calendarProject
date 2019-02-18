@@ -64,7 +64,7 @@ class Calenda2 extends Component {
       showModal: false,
       title: DEFAULT_TITLE,
       currentModal: null,
-      desc:events.desc,
+      desc:"개인사정",
       startDate:undefined,
       endDate:undefined,
       selected: '연차',
@@ -76,7 +76,12 @@ class Calenda2 extends Component {
     this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
+  // 이벤트 내용 있는 것 클릭했을때
   handleOpenModal (e) {
+    if(e.title === '연차') {
+      console.log()
+      console.log('dd');
+    }
     this.setState({
       showModal: true,
       title:e.title,
@@ -115,12 +120,6 @@ class Calenda2 extends Component {
   }
 
   handleInputChange = (e) => {
-    if(e.target.value === '연차') {
-      this.setState({
-        isShow:true
-      });
-    }
-
     this.setState({
       desc: e.target.value
     });
@@ -185,6 +184,72 @@ class Calenda2 extends Component {
 
 
 
+  // 이벤트마다 다른것
+  eventStyleGetter = (event, start, end, isSelected) => {
+    if(event.title === '연차') {
+      const backgroundColor = '#ffc000';
+      const style = {
+        backgroundColor: backgroundColor
+      };
+      return {
+        style: style
+      };
+    } else if (event.title === '오전 반차') {
+      const backgroundColor = '#00b0f0';
+      const style = {
+        backgroundColor: backgroundColor
+      };
+      return {
+        style: style
+      };
+    } else if (event.title === '오후 반차') {
+      const backgroundColor = '#7030a0';
+      const style = {
+        backgroundColor: backgroundColor
+      };
+      return {
+        style: style
+      };
+    } else if (event.title === '출근') {
+      const backgroundColor = '#00823b';
+      const style = {
+        backgroundColor: backgroundColor
+      };
+      return {
+        style: style
+      };
+    } else if (event.title === '무단결근') {
+      const backgroundColor = '#ff0000';
+      const style = {
+        backgroundColor: backgroundColor
+      };
+      return {
+        style: style
+      };
+    } else if (event.title === '외출') {
+      const backgroundColor = '#808080';
+      const style = {
+        backgroundColor: backgroundColor
+      };
+      return {
+        style: style
+      };
+    }
+    
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
 
   render() {
     // const { currentModal } = this.state;
@@ -200,11 +265,9 @@ class Calenda2 extends Component {
           defaultView={BigCalendar.Views.MONTH}
           scrollToTime={new Date(1970, 1, 1, 6)}
           defaultDate={new Date()}
-          onSelectEvent={
-            this.handleOpenModal
-            // event => alert(event.title)
-          }
+          onSelectEvent={this.handleOpenModal} // event => alert(event.title)
           onSelectSlot={this.handleSelect}
+          eventPropGetter={(this.eventStyleGetter)}
           // components={{
           //   event: Event,
           //   agenda: {

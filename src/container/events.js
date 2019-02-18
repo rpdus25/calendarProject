@@ -13,15 +13,15 @@ export default [
   },
 
   {
-    'title': 'DTS STARTS',
-    'start': new Date(2019, 2, 12, 0, 0, 0),
-    'end': new Date(2019, 2, 20, 0, 0, 0)
+    'title': '연차',
+    'start': new Date(2019, 1, 12, 0, 0, 0),
+    'end': new Date(2019, 1, 20, 0, 0, 0)
   },
 
   {
-    'title': 'DTS ENDS',
-    'start': new Date(2019, 10, 6, 0, 0, 0),
-    'end': new Date(2019, 10, 12, 0, 0, 0)
+    'title': '외출',
+    'start': new Date(2019, 1, 6, 0, 0, 0),
+    'end': new Date(2019, 1, 6, 0, 0, 0)
   },
 
   {
