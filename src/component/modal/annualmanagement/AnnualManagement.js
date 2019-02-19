@@ -24,7 +24,8 @@ export default props => {
     onChangeInput,
     onChangeInputStart,
     onChangeInputEnd,
-    defaultDate
+    defaultDate,
+    isWeekday
   } = props;
 
   return (
@@ -137,6 +138,8 @@ export default props => {
                   startDate={startDate}
                   endDate={endDate}
                   onChange={onChangeInputStart}
+                  filterDate={isWeekday}
+                  placeholderText="날짜를 선택해주세요."
                 />
                 -
                 <i className="material-icons">date_range</i>
@@ -148,6 +151,8 @@ export default props => {
                   startDate={startDate}
                   endDate={endDate}
                   onChange={onChangeInputEnd}
+                  filterDate={isWeekday}
+                  placeholderText="날짜를 선택해주세요."
                 />
 
                 <i className="material-icons">
@@ -164,6 +169,7 @@ export default props => {
                   timeIntervals={15}
                   dateFormat="h:mm aa"
                   timeCaption="Time"
+                  placeholderText="시간을 선택해주세요."
                 />
                 -
                 <i className="material-icons">
@@ -180,6 +186,7 @@ export default props => {
                   timeIntervals={15}
                   dateFormat="h:mm aa"
                   timeCaption="Time"
+                  placeholderText="시간을 선택해주세요."
                 />
               </div>
               {title === '연차관리' ?

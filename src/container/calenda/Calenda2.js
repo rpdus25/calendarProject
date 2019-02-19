@@ -9,6 +9,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import AnnualManagement from "../../component/modal/annualmanagement/AnnualManagement"
 import isAfter from "date-fns/isAfter";
+import getDay from "date-fns/getDay";
 
 
 // Setup the localizer by providing the moment (or globalize) Object
@@ -125,7 +126,13 @@ class Calenda2 extends Component {
     this.setState({
       desc: e.target.value
     });
-  }
+  };
+
+
+  isWeekday = date => {
+    const day = getDay(date);
+    return day !== 0 && day !== 6;
+  };
 
   // 모달 닫기
   handleCloseModal () {
@@ -155,17 +162,17 @@ class Calenda2 extends Component {
   }
 
   /* When you choose a particular slot on the calendar */
-  onSlotChange(slotInfo) {
-    var startDate = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DDm:ss");
-    var endDate = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DDm:ss");
-    console.log('startTimetartDate); //shows the start time chosen');
-    console.log('endTimendDate); //shows the end time chosen');
-  }
-
-  /* When you click on an already booked slot */
-  onEventClick(event) {
-    console.log(event) //Shows the event details provided while booking
-  }
+  // onSlotChange(slotInfo) {
+  //   var startDate = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DDm:ss");
+  //   var endDate = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DDm:ss");
+  //   console.log('startTimetartDate); //shows the start time chosen');
+  //   console.log('endTimendDate); //shows the end time chosen');
+  // }
+  //
+  // /* When you click on an already booked slot */
+  // onEventClick(event) {
+  //   console.log(event) //Shows the event details provided while booking
+  // }
 
 
   // 모달 내부 데이트 피커
@@ -263,7 +270,7 @@ class Calenda2 extends Component {
     // const { currentModal } = this.state;
 
     return (
-      <div style={{ height:"calc(100vh - 200px)" }}>
+      <div style={{ height:"calc(100vh - 102px)" }}>
         <BigCalendar
           popup
           selectable
@@ -304,9 +311,9 @@ class Calenda2 extends Component {
           selected={this.state.selected}
           isShow={this.toggle}
           defaultDate={this.state.defaultDate}
+          isWeekday={this.isWeekday}
           // onRequestClose={this.handleModalCloseRequest}
         />
-
       </div>
     )
   }

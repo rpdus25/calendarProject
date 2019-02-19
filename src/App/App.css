@@ -327,8 +327,30 @@ input[type="radio"]:checked + label {
 }
 
 .rbc-month-header .rbc-header:first-child,
-.rbc-month-header .rbc-header:last-child,
-.rbc-row .rbc-date-cell:first-child,
-.rbc-row .rbc-date-cell:last-child {
+.rbc-row .rbc-date-cell:first-child {
     color:#ff0000;
+}
+
+.rbc-month-header .rbc-header:last-child,
+.rbc-row .rbc-date-cell:last-child {
+    color: #108af3;
+}
+.rbc-date-cell a {
+    display:block;
+    vertical-align: middle;
+    text-align: center;
+    margin: 4px auto;
+    font-size:12px;
+    letter-spacing: 0.3px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+}
+.rbc-date-cell.rbc-current a {
+    background: #1967d2;
+    text-align: center;
+    color: #fff !important;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
 }
