@@ -125,13 +125,15 @@ var {
     box-sizing: border-box;
 }
 
-.blind,
-legend {
-    display: block;
-    overflow: hidden;
+legend,
+caption,
+.hidden {
     position: absolute;
-    top: -1000em;
-    left: 0
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
 }
 
 strong {
@@ -211,6 +213,12 @@ label {
     background-color: #337ab7;
     border-color: #2e6da4;
 }
+
+
+input[type="radio"]:checked + label {
+    background: #204d74;
+}
+
 
 /*.btn.focus, .btn:focus, .btn:hover {*/
     /*color: #333;*/

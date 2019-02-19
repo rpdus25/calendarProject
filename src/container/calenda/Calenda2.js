@@ -49,12 +49,6 @@ moment().format('llll'); // 2016년 10월 11일 화 오후 11시 42분
 //       </span>
 // }
 
-
-
-
-
-
-
 class Calenda2 extends Component {
   // constructor(props) {
   //   super(props);
@@ -69,6 +63,7 @@ class Calenda2 extends Component {
       startDate:undefined,
       endDate:undefined,
       selected: '연차',
+      defaultDate:new Date() // 서버에서 받은 오늘 날짜로 수정해야함
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -83,29 +78,25 @@ class Calenda2 extends Component {
       console.log('dd');
     }
 
-    if(e.start === e.end) { // 하루만 선택시
-      this.setState({
-        showModal: true,
-        title:e.title,
-        desc:e.desc,
-        startDate:e.start,
-        endDate:e.end
-      });
-    } else {
-      this.setState({
-        showModal: true,
-        title:e.title,
-        desc:e.desc,
-        startDate:e.start,
-        // endDate:e.end.setDate(e.end.getDate() - 1)
-      });
-    }
+    this.setState({
+      showModal: true,
+      title:e.title,
+      desc:e.desc,
+      startDate:e.start,
+      endDate:e.end
+    });
   }
 
-
-
-
   handleSelect = ({ start, end }) => {
+    if(start < this.state.defaultDate || end < this.state.defaultDate ) {
+      if(start.getDay() === this.state.defaultDate.getDay()) {
+        console.log('오늘');
+      } else {
+        alert('오늘 이후 날짜만 선택 가능합니다.');
+        return false;
+      }
+    }
+
     if(!(start.getDay() === 0 || start.getDay() === 6 || end.getDay() === 0 || end.getDay() === 6) ) {
       const title = "";
       const startDate = start;
@@ -268,31 +259,6 @@ class Calenda2 extends Component {
     })
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   render() {
     // const { currentModal } = this.state;
 
@@ -306,7 +272,7 @@ class Calenda2 extends Component {
           // views={allViews}
           defaultView={BigCalendar.Views.MONTH}
           scrollToTime={new Date(1970, 1, 1, 6)}
-          defaultDate={new Date()}
+          defaultDate={this.state.defaultDate}
           onSelectEvent={this.handleOpenModal} // event => alert(event.title)
           onSelectSlot={this.handleSelect}
           eventPropGetter={(this.eventStyleGetter)}
@@ -337,6 +303,7 @@ class Calenda2 extends Component {
           onChangeHandleOption={this.handleOptionChange}
           selected={this.state.selected}
           isShow={this.toggle}
+          defaultDate={this.state.defaultDate}
           // onRequestClose={this.handleModalCloseRequest}
         />
 

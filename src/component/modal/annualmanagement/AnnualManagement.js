@@ -23,7 +23,8 @@ export default props => {
     onRequestClose,
     onChangeInput,
     onChangeInputStart,
-    onChangeInputEnd
+    onChangeInputEnd,
+    defaultDate
   } = props;
 
   return (
@@ -45,50 +46,76 @@ export default props => {
         <button onClick={askToClose}>닫기</button>
         <div>
           <div className="list-wrap">
-            <label htmlFor="radio-1" className="btn btn-primary">
-              <input
-                type='radio'
-                id='radio-1'
-                name='myRadio'
-                value='연차'
-                checked={selected === '연차'}
-                onChange={onChangeHandleOption}
-              />
-              연차
-            </label>
-            <label htmlFor="radio-2" className="btn btn-primary">
-              <input
-                type='radio'
-                id='radio-2'
-                name='myRadio'
-                value='오전 반차'
-                checked={selected === '오전 반차'}
-                onChange={onChangeHandleOption}
-              />
-              오전 반차
-            </label>
-            <label htmlFor="radio-3" className="btn btn-primary">
-              <input
-                type='radio'
-                id='radio-3'
-                name='myRadio'
-                value='오후 반차'
-                checked={selected === '오후 반차'}
-                onChange={onChangeHandleOption}
-              />
-              오후 반차
-            </label>
-            <label htmlFor="radio-4" className="btn btn-primary">
-              <input
-                type='radio'
-                id='radio-4'
-                name='myRadio'
-                value='외출'
-                checked={selected === '외출'}
-                onChange={onChangeHandleOption}
-              />
-              외출
-            </label>
+            <input
+              className="hidden"
+              type='radio'
+              id='radio-1'
+              name='myRadio'
+              value='연차'
+              checked={selected === '연차'}
+              onChange={onChangeHandleOption}
+            />
+            <label htmlFor="radio-1" className="btn btn-primary">연차 </label>
+            <input
+              className="hidden"
+              type='radio'
+              id='radio-2'
+              name='myRadio'
+              value='오전 반차'
+              checked={selected === '오전 반차'}
+              onChange={onChangeHandleOption}
+            />
+            <label htmlFor="radio-2" className="btn btn-primary"> 오전 반차 </label>
+            <input
+              className="hidden"
+              type='radio'
+              id='radio-3'
+              name='myRadio'
+              value='오후 반차'
+              checked={selected === '오후 반차'}
+              onChange={onChangeHandleOption}
+            />
+            <label htmlFor="radio-3" className="btn btn-primary">오후 반차</label>
+            <input
+              className="hidden"
+              type='radio'
+              id='radio-4'
+              name='myRadio'
+              value='외출1'
+              checked={selected === '외출1'}
+              onChange={onChangeHandleOption}
+            />
+            <label htmlFor="radio-4" className="btn btn-primary"> 외출1</label>
+            <input
+              className="hidden"
+              type='radio'
+              id='radio-5'
+              name='myRadio'
+              value='외출2'
+              checked={selected === '외출2'}
+              onChange={onChangeHandleOption}
+            />
+            <label htmlFor="radio-5" className="btn btn-primary">외출2</label>
+            <input
+              className="hidden"
+              type='radio'
+              id='radio-6'
+              name='myRadio'
+              value='외출3'
+              checked={selected === '외출3'}
+              onChange={onChangeHandleOption}
+            />
+            <label htmlFor="radio-6" className="btn btn-primary"> 외출3</label>
+            <input
+              className='hidden'
+              type='radio'
+              id='radio-7'
+              name='myRadio'
+              value='외출4'
+              checked={selected === '외출4'}
+              onChange={onChangeHandleOption}
+            />
+            <label htmlFor="radio-7" className="btn btn-primary">외출4</label>
           </div>
           <div className="list-wrap">
             <textarea
@@ -100,11 +127,10 @@ export default props => {
               style={{width:"100%", display:"block"}}
             />
           </div>
-          {selected === '연차' ?
-            <div>
               <div className="list-wrap">
                 <i className="material-icons">date_range</i>
                 <DatePicker
+                  minDate={defaultDate}
                   dateFormat="yyyy/MM/dd"
                   selected={startDate}
                   selectsStart
@@ -115,63 +141,7 @@ export default props => {
                 -
                 <i className="material-icons">date_range</i>
                 <DatePicker
-                  dateFormat="yyyy/MM/dd"
-                  selected={endDate}
-                  selectsEnd
-                  startDate={startDate}
-                  endDate={endDate}
-                  onChange={onChangeInputEnd}
-                />
-              </div>
-
-              {title === '연차관리' ?
-                <div>
-                  <button
-                    className="btn btn-primary"
-                    onClick={onSubmit}
-                  >
-                    저장
-                  </button>
-                  <button
-                    onClick={askToClose}
-                    className="btn btn-primary"
-                  >
-                    취소
-                  </button>
-                </div>
-
-                :
-                <div>
-                  <button
-                    className="btn btn-primary"
-                  >
-                    수정
-                  </button>
-                  <button
-                    onClick={askToClose}
-                    className="btn btn-primary"
-                  >
-                    취소
-                  </button>
-                </div>
-              }
-            </div>
-            :
-            <div>
-              <div className="list-wrap">
-                <i className="material-icons">date_range</i>
-                <DatePicker
-
-                  dateFormat="yyyy/MM/dd"
-                  selected={startDate}
-                  selectsStart
-                  startDate={startDate}
-                  endDate={endDate}
-                  onChange={onChangeInputStart}
-                />
-                -
-                <i className="material-icons">date_range</i>
-                <DatePicker
+                  minDate={defaultDate}
                   dateFormat="yyyy/MM/dd"
                   selected={endDate}
                   selectsEnd
@@ -184,6 +154,7 @@ export default props => {
                   access_time
                 </i>
                 <DatePicker
+                  minDate={defaultDate}
                   selected={startDate}
                   onChange={onChangeInputStart}
                   minTime={setHours(setMinutes(startDate, 0), 8)}
@@ -199,6 +170,7 @@ export default props => {
                   access_time
                 </i>
                 <DatePicker
+                  minDate={defaultDate}
                   selected={endDate}
                   onChange={onChangeInputEnd}
                   minTime={setHours(setMinutes(endDate, 0), 9)}
@@ -241,8 +213,6 @@ export default props => {
                   </button>
                 </div>
               }
-            </div>
-          }
         </div>
     </Modal>
   );
