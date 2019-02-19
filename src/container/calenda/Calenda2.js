@@ -30,11 +30,6 @@ moment().format('lll');  // 2016년 10월 11일 오후 11시 42분
 moment().format('LLLL'); // 2016년 10월 11일 화요일 오후 11시 42분
 moment().format('llll'); // 2016년 10월 11일 화 오후 11시 42분
 
-
-
-
-
-
 /*Agenda Rendering*/
 //Outside the class
 // function Event({ event }) {
@@ -53,6 +48,12 @@ moment().format('llll'); // 2016년 10월 11일 화 오후 11시 42분
 //     <em style={{ color: 'magenta'}}>{event.title}</em><p>{ event.desc }</p>
 //       </span>
 // }
+
+
+
+
+
+
 
 class Calenda2 extends Component {
   // constructor(props) {
@@ -79,23 +80,30 @@ class Calenda2 extends Component {
   // 이벤트 내용 있는 것 클릭했을때
   handleOpenModal (e) {
     if(e.title === '연차') {
-      console.log()
       console.log('dd');
     }
-    this.setState({
-      showModal: true,
-      title:e.title,
-      desc:e.desc,
-      startDate:e.start,
-      endDate:e.end
-    });
+
+    if(e.start === e.end) { // 하루만 선택시
+      this.setState({
+        showModal: true,
+        title:e.title,
+        desc:e.desc,
+        startDate:e.start,
+        endDate:e.end
+      });
+    } else {
+      this.setState({
+        showModal: true,
+        title:e.title,
+        desc:e.desc,
+        startDate:e.start,
+        // endDate:e.end.setDate(e.end.getDate() - 1)
+      });
+    }
   }
 
-  handleCloseModal () {
-    this.setState({
-      showModal: false
-    });
-  }
+
+
 
   handleSelect = ({ start, end }) => {
     if(!(start.getDay() === 0 || start.getDay() === 6 || end.getDay() === 0 || end.getDay() === 6) ) {
@@ -112,13 +120,13 @@ class Calenda2 extends Component {
             ...this.state.events,
             {
               title,
-              start,
-              end
+              // start,
+              // end
             },
           ],
-        })
+        });
     } else {
-      alert("휴일은 선택이 불가능합니다.");
+      alert("휴일은 입력이 불가능합니다.");
     }
   }
 
@@ -128,20 +136,27 @@ class Calenda2 extends Component {
     });
   }
 
-  toggleModal = key => event => {
-    event.preventDefault();
-    console.log("toggleModal");
-    if (this.state.currentModal) {
-      this.handleModalCloseRequest();
-      return;
-    }
-
+  // 모달 닫기
+  handleCloseModal () {
     this.setState({
-      ...this.state,
-      currentModal: key,
-      title: DEFAULT_TITLE
+      showModal: false
     });
   }
+
+  // toggleModal = key => event => {
+  //   event.preventDefault();
+  //   console.log("toggleModal");
+  //   if (this.state.currentModal) {
+  //     this.handleModalCloseRequest();
+  //     return;
+  //   }
+  //
+  //   this.setState({
+  //     ...this.state,
+  //     currentModal: key,
+  //     title: DEFAULT_TITLE
+  //   });
+  // }
 
   handleOnAfterOpenModal = () => {
     // when ready, we can access the available refs.
@@ -222,6 +237,51 @@ class Calenda2 extends Component {
     }
   }
 
+  // 모달 내부 전송
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('submitted');
+    console.log(this.state.endDate);
+    this.setState({
+      showModal: false,
+      endDate : this.state.endDate.setHours(20,21,22)
+    });
+    this.save(this.state);
+  };
+
+  save = (writingState) => {
+    const events = this.state.events;
+    let lastNoteId =  events[events.length-1].id;
+
+    this.setState({
+      events: [
+        ...events,
+        //content 안에 userInput을 넣어야, content로 저장이 됩니다.
+        {
+          id: ++lastNoteId,
+          'title': writingState.selected,
+          'start': writingState.startDate,
+          'end': writingState.endDate,
+          desc : writingState.desc
+        }
+      ]
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -260,6 +320,7 @@ class Calenda2 extends Component {
         />
 
         <AnnualManagement
+          onSubmit={this.handleSubmit}
           title={this.state.title}
           desc={this.state.desc}
           start={this.state.start}
