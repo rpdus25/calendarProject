@@ -1,21 +1,80 @@
 export default [
   {
-    'title': '반차',
+    'title': '출근',
+    'allDay': true,
+    'start': new Date(2019, 1, 1),
+    'end': new Date(2019, 1, 1),
+  },
+  {
+    'title': '오전 반차',
     'allDay': true,
     'start': new Date(2019, 1, 1),
     'end': new Date(2019, 1, 1),
     desc:"배가 아파서 반차를 썻다"
   },
   {
+    'title': '출근',
+    'allDay': true,
+    'start': new Date(2019, 1, 4),
+    'end': new Date(2019, 1, 4),
+  },
+  {
+    'title': '외출',
+    'allDay': true,
+    'start': new Date(2019, 1, 4),
+    'end': new Date(2019, 1, 4),
+  },
+  {
+    'title': '외출',
+    'allDay': true,
+    'start': new Date(2019, 1, 4),
+    'end': new Date(2019, 1, 4),
+  },
+  {
+    'title': '외출',
+    'allDay': true,
+    'start': new Date(2019, 1, 4),
+    'end': new Date(2019, 1, 4),
+  },
+  {
+    'title': '외출',
+    'allDay': true,
+    'start': new Date(2019, 1, 4),
+    'end': new Date(2019, 1, 4),
+  },
+  {
+    'title': '외출',
+    'allDay': true,
+    'start': new Date(2019, 1, 4),
+    'end': new Date(2019, 1, 4),
+  },
+  {
+    'title': '강제 야근',
+    'allDay': true,
+    'start': new Date(2019, 1, 4),
+    'end': new Date(2019, 1, 4),
+  },
+  {
+    'title': '무단결근',
+    'allDay': true,
+    'start': new Date(2019, 1, 5),
+    'end': new Date(2019, 1, 5),
+  },
+  {
     'title': "연차",
-    'start': new Date(2019, 1, 7),
-    'end': new Date(2019, 1, 10)
+    'start': new Date(2019, 1, 7, 0, 0, 0),
+    'end': new Date(2019, 1, 9, 0, 0, 0)
+  },
+  {
+    'title': "오후 반차",
+    'start': new Date(2019, 1, 11),
+    'end': new Date(2019, 1, 11)
   },
 
   {
     'title': '연차',
     'start': new Date(2019, 1, 12, 0, 0, 0),
-    'end': new Date(2019, 1, 20, 0, 0, 0)
+    'end': new Date(2019, 1, 15, 0, 0, 0)
   },
 
   {

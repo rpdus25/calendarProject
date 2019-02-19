@@ -57,7 +57,6 @@ export default props => {
               <option value="0">08:00 ~ 17:00</option>
               <option value="1">09:00 ~ 18:00</option>
               <option value="2">10:00 ~ 19:00</option>
-              <option value="3">10:00 ~ 17:00</option>
             </select>
           </dd>
         </dl>

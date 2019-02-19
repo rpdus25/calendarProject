@@ -317,3 +317,10 @@ label {
 .rbc-event.black {
     background: #000;
 }
+
+.rbc-month-header .rbc-header:first-child,
+.rbc-month-header .rbc-header:last-child,
+.rbc-row .rbc-date-cell:first-child,
+.rbc-row .rbc-date-cell:last-child {
+    color:#ff0000;
+}

@@ -98,25 +98,28 @@ class Calenda2 extends Component {
   }
 
   handleSelect = ({ start, end }) => {
-    const title = "";
-
-    const startDate = start;
-    // const title = window.prompt('New Event name');
-    if ({showModal: true})
-      this.setState({
-        title: DEFAULT_TITLE,
-        startDate: start,
-        endDate: end,
-        showModal: true,
-        events: [
-          ...this.state.events,
-          {
-            title,
-            start,
-            end
-          },
-        ],
-      })
+    if(!(start.getDay() === 0 || start.getDay() === 6 || end.getDay() === 0 || end.getDay() === 6) ) {
+      const title = "";
+      const startDate = start;
+      // const title = window.prompt('New Event name');
+      if ({showModal: true})
+        this.setState({
+          title: DEFAULT_TITLE,
+          startDate: start,
+          endDate: end,
+          showModal: true,
+          events: [
+            ...this.state.events,
+            {
+              title,
+              start,
+              end
+            },
+          ],
+        })
+    } else {
+      alert("휴일은 선택이 불가능합니다.");
+    }
   }
 
   handleInputChange = (e) => {
@@ -159,7 +162,7 @@ class Calenda2 extends Component {
   }
 
 
-  // 데이트피커
+  // 모달 내부 데이트 피커
   handleChange = ({ startDate, endDate }) => {
     startDate = startDate || this.state.startDate;
     endDate = endDate || this.state.endDate;
@@ -174,17 +177,15 @@ class Calenda2 extends Component {
   handleChangeStart = startDate => this.handleChange({ startDate });
   handleChangeEnd = endDate => this.handleChange({ endDate });
 
-  // 라디오 버튼 체인지
+
+  // 모달 내부 라디오 버튼 체인지
   handleOptionChange = (e) => {
     this.setState({
       selected: e.target.value
     });
   }
 
-
-
-
-  // 이벤트마다 다른것
+  // 이벤트마다 색표시 다르게
   eventStyleGetter = (event, start, end, isSelected) => {
     if(event.title === '연차') {
       return {
@@ -219,9 +220,6 @@ class Calenda2 extends Component {
         className:"black"
       };
     }
-    
-
-
   }
 
 
