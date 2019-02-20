@@ -4,9 +4,29 @@ import '../modal.css';
 import moment from "moment";
 import isAfter from "date-fns/isAfter";
 import getDay from "date-fns/getDay";
+import DatePicker from "react-datepicker";
+import range from "lodash/range";
+import getYear from "date-fns/getYear";
+import getMonth from "date-fns/getMonth";
 
 const MODAL_B = 'modal_b';
 const DEFAULT_TITLE = 'Default title';
+
+const years = range(1990, getYear(new Date()) + 1, 1);
+const months = [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11
+];
 
 class DefaultWorkTimeChangeModal extends Component {
   constructor(props) {
@@ -19,8 +39,6 @@ class DefaultWorkTimeChangeModal extends Component {
       endDate:undefined,
       defaultDate:new Date() // 서버에서 받은 오늘 날짜로 수정해야함
     };
-    this.handleChangeStart = this.handleChangeStart.bind(this);
-    this.handleChangeEnd = this.handleChangeEnd.bind(this);
   }
 
   toggleModal = key => event => {
@@ -71,8 +89,11 @@ class DefaultWorkTimeChangeModal extends Component {
     this.setState({ startDate, endDate });
   };
 
-  handleChangeStart = startDate => this.handleChange({ startDate });
-  handleChangeEnd = endDate => this.handleChange({ endDate });
+  handleChange = date => {
+    this.setState({
+      startDate: date
+    });
+  };
   
   // 주말 및 오늘은 제외한 기본 근무 시간 변경 달력 표시
   isWeekday = date => {
@@ -92,22 +113,23 @@ class DefaultWorkTimeChangeModal extends Component {
           onAfterOpen={this.handleOnAfterOpenModal}
           onRequestClose={this.handleModalCloseRequest}
           askToClose={this.toggleModal(MODAL_B)}
-
-
           onSubmit={this.handleSubmit}
           desc={this.state.desc}
           start={this.state.start}
           startDate = {this.state.startDate}
           endDate = {this.state.endDate}
           events={this.state.events}
-          onChangeInput={this.handleInputChange}
-          onChangeInputStart={this.handleChangeStart}
-          onChangeInputEnd={this.handleChangeEnd}
+          onChange={this.handleChange}
+          // onChangeInput={this.handleInputChange}
+          // onChangeInputStart={this.handleChangeStart}
+          // onChangeInputEnd={this.handleChangeEnd}
           onChangeHandleOption={this.handleOptionChange}
           selected={this.state.selected}
           isShow={this.toggle}
           defaultDate={this.state.defaultDate}
           isWeekday={this.isWeekday}
+          years={years}
+          months={months}
         />
       </div>
     );

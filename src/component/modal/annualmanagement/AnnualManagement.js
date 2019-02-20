@@ -32,7 +32,7 @@ export default props => {
       style={{
         content: {
           width:'900px',
-          height:'300px'
+          height:'300px',
         }
       }}
       contentLabel="modalE"

@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Modal from 'react-modal';
 import '../modal.css'
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import setMinutes from "date-fns/setMinutes";
 import setHours from "date-fns/setHours";
+import getYear from "date-fns/getYear";
+import getMonth from "date-fns/getMonth";
+
+
 
 export default props => {
   const {
+    handleChange,
     isOpen,
     askToClose,
     onAfterOpen,
@@ -21,7 +26,9 @@ export default props => {
     onChangeInputStart,
     onChangeInputEnd,
     defaultDate,
-    isWeekday
+    isWeekday,
+    years,
+    months
   } = props;
 
   return (
@@ -50,18 +57,75 @@ export default props => {
           </dd>
         </dl>
         <dl className="list-wrap">
-          <dt>변경 적용 시작 날짜:</dt>
+          <dt>변경 시작 날짜:</dt>
           <dd>
             <DatePicker
               minDate={defaultDate}
-              dateFormat="yyyy/MM/dd"
+              // dateFormat="yyyy/MM/dd"
               selected={startDate}
               selectsStart
               startDate={startDate}
               endDate={startDate}
-              onChange={onChangeInputStart}
+              onChange={handleChange}
               filterDate={isWeekday}
               placeholderText="날짜를 선택해주세요."
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              dateFormat="MMMM d, yyyy h:mm aa"
+              timeCaption="time"
+
+              renderCustomHeader={({
+               date,
+               changeYear,
+               changeMonth,
+               decreaseMonth,
+               increaseMonth,
+               prevMonthButtonDisabled,
+               nextMonthButtonDisabled
+             }) => (
+                <div
+                  style={{
+                    margin: 10,
+                    display: "flex",
+                    justifyContent: "center"
+                  }}
+                >
+                  <button
+                    onClick={decreaseMonth}
+                    disabled={prevMonthButtonDisabled}
+                  >
+                    {"<"}
+                  </button>
+                  <select
+                    value={getYear(date)}
+                    onChange={({ target: { value } }) => changeYear(value)}
+                  >
+                    {years.map(option => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+
+                  <select
+                    value={months[getMonth(date)]}
+                    onChange={({ target: { value } }) => changeMonth(value)}
+                  >
+                    {months.map(option => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+
+                  <button
+                    onClick={increaseMonth}
+                    disabled={nextMonthButtonDisabled}
+                  >
+                    {">"}
+                  </button>
+                </div>
+              )}
             />
           </dd>
         </dl>
