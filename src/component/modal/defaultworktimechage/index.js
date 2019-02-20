@@ -12,7 +12,7 @@ import getMonth from "date-fns/getMonth";
 const MODAL_B = 'modal_b';
 const DEFAULT_TITLE = 'Default title';
 
-const years = range(1990, getYear(new Date()) + 1, 1);
+const years = range(getYear(new Date()), getYear(new Date()) + 20, 1);
 const months = [
   0,
   1,
