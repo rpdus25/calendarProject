@@ -61,18 +61,11 @@ export default props => {
           <dd>
             <DatePicker
               minDate={defaultDate}
-              // dateFormat="yyyy/MM/dd"
+              dateFormat="yyyy/MM/dd"
               selected={startDate}
-              selectsStart
-              startDate={startDate}
-              endDate={startDate}
-              onChange={handleChange}
+              onChange={onChangeInputStart}
               filterDate={isWeekday}
               placeholderText="날짜를 선택해주세요."
-              timeFormat="HH:mm"
-              timeIntervals={15}
-              dateFormat="MMMM d, yyyy h:mm aa"
-              timeCaption="time"
 
               renderCustomHeader={({
                date,

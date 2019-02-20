@@ -39,6 +39,9 @@ class DefaultWorkTimeChangeModal extends Component {
       endDate:undefined,
       defaultDate:new Date() // 서버에서 받은 오늘 날짜로 수정해야함
     };
+
+    this.handleChangeStart = this.handleChangeStart.bind(this);
+    this.handleChangeEnd = this.handleChangeEnd.bind(this);
   }
 
   toggleModal = key => event => {
@@ -64,14 +67,6 @@ class DefaultWorkTimeChangeModal extends Component {
     });
   }
 
-  handleInputChange = e => {
-    let text = e.target.value;
-    if (text == '') {
-      text = DEFAULT_TITLE;
-    }
-    this.setState({ ...this.state, title1: text });
-  }
-
   handleOnAfterOpenModal = () => {
     // when ready, we can access the available refs.
     this.heading && (this.heading.style.color = '#F00');
@@ -89,11 +84,15 @@ class DefaultWorkTimeChangeModal extends Component {
     this.setState({ startDate, endDate });
   };
 
-  handleChange = date => {
-    this.setState({
-      startDate: date
-    });
-  };
+  handleChangeStart = startDate => this.handleChange({ startDate });
+  handleChangeEnd = endDate => this.handleChange({ endDate });
+
+  // handleChange = date => {
+  //   this.setState({
+  //     selected:date,
+  //     startDate: date
+  //   });
+  // };
   
   // 주말 및 오늘은 제외한 기본 근무 시간 변경 달력 표시
   isWeekday = date => {
@@ -108,22 +107,16 @@ class DefaultWorkTimeChangeModal extends Component {
       <div>
         <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_B)}>기본 근무 시간 변경</button>
         <DefaultWorkTimeChange
-          title={this.state.title1}
           isOpen={currentModal == MODAL_B}
           onAfterOpen={this.handleOnAfterOpenModal}
           onRequestClose={this.handleModalCloseRequest}
           askToClose={this.toggleModal(MODAL_B)}
           onSubmit={this.handleSubmit}
-          desc={this.state.desc}
           start={this.state.start}
           startDate = {this.state.startDate}
           endDate = {this.state.endDate}
           events={this.state.events}
-          onChange={this.handleChange}
-          // onChangeInput={this.handleInputChange}
-          // onChangeInputStart={this.handleChangeStart}
-          // onChangeInputEnd={this.handleChangeEnd}
-          onChangeHandleOption={this.handleOptionChange}
+          onChangeInputStart={this.handleChangeStart}
           selected={this.state.selected}
           isShow={this.toggle}
           defaultDate={this.state.defaultDate}
