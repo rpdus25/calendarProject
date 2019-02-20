@@ -346,11 +346,11 @@ input[type="radio"]:checked + label {
     height: 24px;
     line-height: 24px;
 }
-.rbc-date-cell.rbc-current a {
-    background: #1967d2;
-    text-align: center;
-    color: #fff !important;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-}
+/*.rbc-date-cell.rbc-current a {*/
+    /*background: #1967d2;*/
+    /*text-align: center;*/
+    /*color: #fff !important;*/
+    /*border-radius: 50%;*/
+    /*-webkit-border-radius: 50%;*/
+    /*-moz-border-radius: 50%;*/
+/*}*/

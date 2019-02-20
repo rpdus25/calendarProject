@@ -1,18 +1,34 @@
 import React from 'react';
 import Modal from 'react-modal';
 import '../modal.css'
+import DatePicker from "react-datepicker";
+import moment from "moment/moment";
+import setMinutes from "date-fns/setMinutes";
+import setHours from "date-fns/setHours";
 
 export default props => {
   const {
-    title, isOpen, askToClose,
-    onAfterOpen, onRequestClose, onChangeInput
+    isOpen,
+    askToClose,
+    onAfterOpen,
+    onRequestClose,
+    onChangeInput,
+    onSubmit,
+    startDate,
+    endDate,
+    onChangeHandleOption,
+    selected,
+    onChangeInputStart,
+    onChangeInputEnd,
+    defaultDate,
+    isWeekday
   } = props;
 
   return (
     <Modal
       style={{
         content: {
-          width:'400px',
+          width:'600px',
           height:'300px'
         }
       }}
@@ -34,7 +50,23 @@ export default props => {
           </dd>
         </dl>
         <dl className="list-wrap">
-          <dt>출/퇴근 시간:</dt>
+          <dt>변경 적용 시작 날짜:</dt>
+          <dd>
+            <DatePicker
+              minDate={defaultDate}
+              dateFormat="yyyy/MM/dd"
+              selected={startDate}
+              selectsStart
+              startDate={startDate}
+              endDate={startDate}
+              onChange={onChangeInputStart}
+              filterDate={isWeekday}
+              placeholderText="날짜를 선택해주세요."
+            />
+          </dd>
+        </dl>
+        <dl className="list-wrap">
+          <dt>변경 근무 시간:</dt>
           <dd>
             <select name="" id="" >
               <option value="0">08:00 ~ 17:00</option>

@@ -51,8 +51,6 @@ moment().format('llll'); // 2016년 10월 11일 화 오후 11시 42분
 // }
 
 class Calenda2 extends Component {
-  // constructor(props) {
-  //   super(props);
   constructor(props) {
     super(props);
     this.state = {
@@ -90,7 +88,7 @@ class Calenda2 extends Component {
 
   handleSelect = ({ start, end }) => {
     if(start < this.state.defaultDate || end < this.state.defaultDate ) {
-      if(start.getDay() === this.state.defaultDate.getDay()) {
+      if(start.getDate() === this.state.defaultDate.getDate()) {
         console.log('오늘');
       } else {
         alert('오늘 이후 날짜만 선택 가능합니다.');
@@ -268,7 +266,6 @@ class Calenda2 extends Component {
 
   render() {
     // const { currentModal } = this.state;
-
     return (
       <div style={{ height:"calc(100vh - 102px)" }}>
         <BigCalendar
@@ -291,7 +288,6 @@ class Calenda2 extends Component {
           // }}
 
         />
-
         <AnnualManagement
           onSubmit={this.handleSubmit}
           title={this.state.title}

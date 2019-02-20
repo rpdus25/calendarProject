@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import DefaultWorkTimeChange from '../defaultworktimechage/DefaultWorkTimeChange';
 import '../modal.css';
+import moment from "moment";
+import isAfter from "date-fns/isAfter";
+import getDay from "date-fns/getDay";
 
 const MODAL_B = 'modal_b';
 const DEFAULT_TITLE = 'Default title';
@@ -10,8 +13,14 @@ class DefaultWorkTimeChangeModal extends Component {
     super(props);
     this.state = {
       title1: DEFAULT_TITLE,
-      currentModal: null
+      currentModal: null,
+      showModal: false,
+      startDate:undefined,
+      endDate:undefined,
+      defaultDate:new Date() // 서버에서 받은 오늘 날짜로 수정해야함
     };
+    this.handleChangeStart = this.handleChangeStart.bind(this);
+    this.handleChangeEnd = this.handleChangeEnd.bind(this);
   }
 
   toggleModal = key => event => {
@@ -50,6 +59,27 @@ class DefaultWorkTimeChangeModal extends Component {
     this.heading && (this.heading.style.color = '#F00');
   }
 
+  // 모달 내부 데이트 피커
+  handleChange = ({ startDate, endDate }) => {
+    startDate = startDate || this.state.startDate;
+    endDate = endDate || this.state.endDate;
+
+    if (isAfter(startDate, endDate)) {
+      endDate = startDate;
+    }
+
+    this.setState({ startDate, endDate });
+  };
+
+  handleChangeStart = startDate => this.handleChange({ startDate });
+  handleChangeEnd = endDate => this.handleChange({ endDate });
+  
+  // 주말 및 오늘은 제외한 기본 근무 시간 변경 달력 표시
+  isWeekday = date => {
+    const day = getDay(date);
+    return day !== 0 && day !== 6 && date > this.state.defaultDate;
+  };
+
   render() {
     const { currentModal } = this.state;
 
@@ -62,6 +92,22 @@ class DefaultWorkTimeChangeModal extends Component {
           onAfterOpen={this.handleOnAfterOpenModal}
           onRequestClose={this.handleModalCloseRequest}
           askToClose={this.toggleModal(MODAL_B)}
+
+
+          onSubmit={this.handleSubmit}
+          desc={this.state.desc}
+          start={this.state.start}
+          startDate = {this.state.startDate}
+          endDate = {this.state.endDate}
+          events={this.state.events}
+          onChangeInput={this.handleInputChange}
+          onChangeInputStart={this.handleChangeStart}
+          onChangeInputEnd={this.handleChangeEnd}
+          onChangeHandleOption={this.handleOptionChange}
+          selected={this.state.selected}
+          isShow={this.toggle}
+          defaultDate={this.state.defaultDate}
+          isWeekday={this.isWeekday}
         />
       </div>
     );

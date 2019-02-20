@@ -3,7 +3,6 @@ import Modal from 'react-modal';
 import '../modal.css'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import events from "../../../container/events";
 import moment from "moment/moment";
 import setMinutes from "date-fns/setMinutes";
 import setHours from "date-fns/setHours";
@@ -41,10 +40,13 @@ export default props => {
       isOpen={isOpen}
       onAfterOpen={onAfterOpen}
       onRequestClose={onRequestClose}
-    >
-        <p>{moment(startDate).format('LL')}</p>
-        <h1>{title}</h1>
-        <button onClick={askToClose}>닫기</button>
+      >
+
+    <h1>{title}</h1>
+    <p>{moment(startDate).format('LL')}</p>
+    <button onClick={askToClose}>
+      <i className="material-icons">close</i>
+    </button>
         <div>
           <div className="list-wrap">
             <input
@@ -82,7 +84,7 @@ export default props => {
               type='radio'
               id='radio-4'
               name='myRadio'
-              value='외출1'
+              value='외출'
               checked={selected === '외출1'}
               onChange={onChangeHandleOption}
             />
@@ -92,7 +94,7 @@ export default props => {
               type='radio'
               id='radio-5'
               name='myRadio'
-              value='외출2'
+              value='외출'
               checked={selected === '외출2'}
               onChange={onChangeHandleOption}
             />
@@ -102,7 +104,7 @@ export default props => {
               type='radio'
               id='radio-6'
               name='myRadio'
-              value='외출3'
+              value='외출'
               checked={selected === '외출3'}
               onChange={onChangeHandleOption}
             />
@@ -112,7 +114,7 @@ export default props => {
               type='radio'
               id='radio-7'
               name='myRadio'
-              value='외출4'
+              value='외출'
               checked={selected === '외출4'}
               onChange={onChangeHandleOption}
             />
@@ -125,12 +127,16 @@ export default props => {
               value={desc}
               placeholder="내용을 입력하세요"
               onChange={onChangeInput}
-              style={{width:"100%", display:"block"}}
+              style={{
+                width:"100%",
+                display:"block",
+                margin:"10px auto"
+              }}
             />
           </div>
-              <div className="list-wrap">
-                <i className="material-icons">date_range</i>
-                <DatePicker
+            <div className="list-wrap">
+              <i className="material-icons">date_range</i>
+              <DatePicker
                   minDate={defaultDate}
                   dateFormat="yyyy/MM/dd"
                   selected={startDate}
@@ -141,56 +147,61 @@ export default props => {
                   filterDate={isWeekday}
                   placeholderText="날짜를 선택해주세요."
                 />
-                -
-                <i className="material-icons">date_range</i>
-                <DatePicker
-                  minDate={defaultDate}
-                  dateFormat="yyyy/MM/dd"
-                  selected={endDate}
-                  selectsEnd
-                  startDate={startDate}
-                  endDate={endDate}
-                  onChange={onChangeInputEnd}
-                  filterDate={isWeekday}
-                  placeholderText="날짜를 선택해주세요."
-                />
+              -
+              <i className="material-icons">date_range</i>
+              <DatePicker
+                minDate={defaultDate}
+                dateFormat="yyyy/MM/dd"
+                selected={endDate}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                onChange={onChangeInputEnd}
+                filterDate={isWeekday}
+                placeholderText="날짜를 선택해주세요."
+              />
 
-                <i className="material-icons">
-                  access_time
-                </i>
-                <DatePicker
-                  minDate={defaultDate}
-                  selected={startDate}
-                  onChange={onChangeInputStart}
-                  minTime={setHours(setMinutes(startDate, 0), 8)}
-                  maxTime={setHours(setMinutes(startDate, 0), 18)}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={15}
-                  dateFormat="h:mm aa"
-                  timeCaption="Time"
-                  placeholderText="시간을 선택해주세요."
-                />
-                -
-                <i className="material-icons">
-                  access_time
-                </i>
-                <DatePicker
-                  minDate={defaultDate}
-                  selected={endDate}
-                  onChange={onChangeInputEnd}
-                  minTime={setHours(setMinutes(endDate, 0), 9)}
-                  maxTime={setHours(setMinutes(endDate, 0), 19)}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={15}
-                  dateFormat="h:mm aa"
-                  timeCaption="Time"
-                  placeholderText="시간을 선택해주세요."
-                />
-              </div>
+              <i className="material-icons">
+                access_time
+              </i>
+              <DatePicker
+                minDate={defaultDate}
+                selected={startDate}
+                onChange={onChangeInputStart}
+                minTime={setHours(setMinutes(startDate, 0), 8)}
+                maxTime={setHours(setMinutes(startDate, 0), 18)}
+                showTimeSelect
+                showTimeSelectOnly
+                timeIntervals={15}
+                dateFormat="h:mm aa"
+                timeCaption="Time"
+                placeholderText="시간을 선택해주세요."
+              />
+              -
+              <i className="material-icons">
+                access_time
+              </i>
+              <DatePicker
+                minDate={defaultDate}
+                selected={endDate}
+                onChange={onChangeInputEnd}
+                minTime={setHours(setMinutes(endDate, 0), 9)}
+                maxTime={setHours(setMinutes(endDate, 0), 19)}
+                showTimeSelect
+                showTimeSelectOnly
+                timeIntervals={15}
+                dateFormat="h:mm aa"
+                timeCaption="Time"
+                placeholderText="시간을 선택해주세요."
+              />
+            </div>
               {title === '연차관리' ?
-                <div>
+                <div
+                  className="list-wrap"
+                  style={{
+                    justifyContent:"flex-end"
+                  }}
+                >
                   <button
                     className="btn btn-primary"
                     onClick={onSubmit}
@@ -206,20 +217,25 @@ export default props => {
                 </div>
 
                 :
-                <div>
-                  <button
-                    className="btn btn-primary"
-                  >
-                    수정
-                  </button>
-                  <button
-                    onClick={askToClose}
-                    className="btn btn-primary"
-                  >
-                    취소
-                  </button>
-                </div>
-              }
+                <div
+                  className="list-wrap"
+                  style={{
+                    justifyContent:"flex-end"
+                  }}
+                >
+                <button
+                  className="btn btn-primary"
+                >
+                  수정
+                </button>
+                <button
+                  onClick={askToClose}
+                  className="btn btn-primary"
+                >
+                  취소
+                </button>
+              </div>
+            }
         </div>
     </Modal>
   );
