@@ -8,8 +8,6 @@ import setHours from "date-fns/setHours";
 import getYear from "date-fns/getYear";
 import getMonth from "date-fns/getMonth";
 
-
-
 export default props => {
   const {
     handleChange,
@@ -28,15 +26,16 @@ export default props => {
     defaultDate,
     isWeekday,
     years,
-    months
+    months,
+    defaultWorkTimeChangeSave,
+    defaultWorkTime
   } = props;
-
   return (
     <Modal
       style={{
         content: {
           width:'600px',
-          height:'300px'
+          justifyContent: "space-between"
         }
       }}
       contentLabel="modalB"
@@ -45,20 +44,24 @@ export default props => {
       onAfterOpen={onAfterOpen}
       onRequestClose={onRequestClose}>
       {/*<h1>{title}</h1>*/}
-      <h1>기본 근무 시간 변경</h1>
+
+      <div style={{display:"flex", justifyContent: "space-between"}}>
+        <h1>기본 근무 시간 변경{defaultWorkTime}</h1>
+        <button className="btn-close"><i className="material-icons" onClick={askToClose}>close</i></button>
+      </div>
+
       <div>
         <dl className="list-wrap">
           <dt>기본 근무 시간:</dt>
           <dd>
             <i className="material-icons">access_time</i>
-            <span>08:00 ~ </span>
-            <i className="material-icons">access_time</i>
-            <span>17:00</span>
+            <span>{defaultWorkTime}</span>
           </dd>
         </dl>
         <dl className="list-wrap">
           <dt>변경 시작 날짜:</dt>
           <dd>
+            <i className="material-icons">date_range</i>
             <DatePicker
               minDate={defaultDate}
               dateFormat="yyyy/MM/dd"
@@ -125,17 +128,25 @@ export default props => {
         <dl className="list-wrap">
           <dt>변경 근무 시간:</dt>
           <dd>
+            <i className="material-icons">access_time</i>
+
             <select name="" id="" >
               <option value="0">08:00 ~ 17:00</option>
               <option value="1">09:00 ~ 18:00</option>
               <option value="2">10:00 ~ 19:00</option>
-              <option value="3">10:00 ~ 17:00</option>
             </select>
           </dd>
         </dl>
-        <button className="btn btn-primary">저장</button>
+        <div className="list-wrap" style={{justifyContent: "flex-end"}}>
+          <button
+            className="btn btn-primary"
+            // onClick={defaultWorkTimeChangeSave}
+          >
+            저장
+          </button>
+          <button className="btn btn-primary" onClick={askToClose}>닫기</button>
+        </div>
       </div>
-      <button onClick={askToClose}>닫기</button>
     </Modal>
   );
 }

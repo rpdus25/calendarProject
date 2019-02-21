@@ -6,13 +6,18 @@ class Annual extends Component {
   constructor(props) {
     super(props);
     this.state = {
+
     }
   };
 
+
   render() {
+
     return <div className="annual-wrap">
       <div className="btn-wrap">
-        <ModalMain/>
+        <ModalMain
+          {...this.props.state}
+        />
       </div>
       <ul className="annual-list">
         <li>기본 연차 : 15개</li>

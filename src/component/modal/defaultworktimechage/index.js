@@ -10,8 +10,6 @@ import getYear from "date-fns/getYear";
 import getMonth from "date-fns/getMonth";
 
 const MODAL_B = 'modal_b';
-const DEFAULT_TITLE = 'Default title';
-
 const years = range(getYear(new Date()), getYear(new Date()) + 20, 1);
 const months = [
   0,
@@ -28,17 +26,29 @@ const months = [
   11
 ];
 
+const defaultWorkTime = [
+  "08:00 ~ 17:00",
+  "09:00 ~ 18:00",
+  "10:00 ~ 19:00",
+]
+
+
 class DefaultWorkTimeChangeModal extends Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //   defaultWorkTime:defaultWorkTime[1],
+    //   currentModal: null,
+    //   showModal: false,
+    //   startDate:undefined,
+    //   endDate:undefined,
+    //   defaultDate:new Date() // 서버에서 받은 오늘 날짜로 수정해야함
+    // };
     this.state = {
-      title1: DEFAULT_TITLE,
+      ...this.props.state,
       currentModal: null,
       showModal: false,
-      startDate:undefined,
-      endDate:undefined,
-      defaultDate:new Date() // 서버에서 받은 오늘 날짜로 수정해야함
-    };
+    }
 
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
@@ -54,7 +64,6 @@ class DefaultWorkTimeChangeModal extends Component {
     this.setState({
       ...this.state,
       currentModal: key,
-      title1: DEFAULT_TITLE
     });
   }
 
@@ -86,13 +95,6 @@ class DefaultWorkTimeChangeModal extends Component {
 
   handleChangeStart = startDate => this.handleChange({ startDate });
   handleChangeEnd = endDate => this.handleChange({ endDate });
-
-  // handleChange = date => {
-  //   this.setState({
-  //     selected:date,
-  //     startDate: date
-  //   });
-  // };
   
   // 주말 및 오늘은 제외한 기본 근무 시간 변경 달력 표시
   isWeekday = date => {
@@ -100,9 +102,54 @@ class DefaultWorkTimeChangeModal extends Component {
     return day !== 0 && day !== 6 && date > this.state.defaultDate;
   };
 
+
+
+
+
+
+
+
+  // 모달 내부 전송
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('submitted');
+    console.log(this.state.endDate);
+    this.setState({
+      showModal: false,
+      endDate : this.state.endDate.setHours(20,21,22)
+    });
+    this.save(this.state);
+  };
+
+  save = (writingState) => {
+    const events = this.state.events;
+    let lastNoteId =  events[events.length-1].id;
+
+    this.setState({
+      events: [
+        ...events,
+        //content 안에 userInput을 넣어야, content로 저장이 됩니다.
+        {
+          id: ++lastNoteId,
+          'title': writingState.selected,
+          'start': writingState.startDate,
+          'end': writingState.endDate,
+          desc : writingState.desc
+        }
+      ]
+    })
+  }
+
+
+
+
+
+
+
+
+
   render() {
     const { currentModal } = this.state;
-
     return (
       <div>
         <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_B)}>기본 근무 시간 변경</button>
@@ -123,6 +170,8 @@ class DefaultWorkTimeChangeModal extends Component {
           isWeekday={this.isWeekday}
           years={years}
           months={months}
+          defaultWorkTime={defaultWorkTime}
+          // defaultWorkTimeChangeSave={defaultWorkTimeChangeSave}
         />
       </div>
     );

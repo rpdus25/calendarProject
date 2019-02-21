@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+<script>
+  Math.reversePow = function(a, b) { //2 ^ 3= 8 => a:2, b:8, return:3
+    return Math.log(b) / Math.log(a);
+  };
+  var items = [{
+    key: "a",
+    name: "투구",
+    position: 1
+  },
+    {
+      key: "b",
+      name: "갑옷",
+      position: 2
+    },
+    {
+      key: "c",
+      name: "투갑",
+      position: 3
+    },
+    {
+      key: "d",
+      name: "전신쫄쫄이",
+      position: 1 | 2 | 4 | 8 | 16 | 32 | 64
+
+    }
+  ];
+  var inven = {}
+  var body = {}
+
+  bodyItemValues = [];
+
+  var position = ["머리", "가슴", "바지", "왼팔", "오른팔", "신발", "허리"];
+  var equipValue = 0;
+  var equipItems = [];
+
+  var equip = function(pItem) {
+    if ((equipValue & pItem.position) == 0) {
+      equipValue = equipValue | pItem.position;
+
+      body[pItem.key] = pItem;
+      delete inven[pItem.key];
+
+      var bits = checkBit(pItem.position, 8);
+
+      for (var i in bits) {
+        bodyItemValues[bits[i]] = pItem;
+      }
+    } else {
+      var bits = checkBit((equipValue & pItem.position), 8);
+      console.log(position[bits[0]] + "부위는 아이템이 착용 되어 있습니다.");
+    }
+  };
+  var unequip = function(pPosition) { //bit 단일 값이 와야함
+    if ((equipValue & pPosition)) {
+      var equipedItem = bodyItemValues[Math.reversePow(2, pPosition)];
+
+      equipValue = equipValue & ~equipedItem.position;
+
+      inven[equipedItem.key] = equipedItem;
+      delete body[equipedItem.key];
+
+      var bits = checkBit(equipedItem.position, 8);
+
+      for (var i in bits) {
+        bodyItemValues[bits[i]] = undefined;
+      }
+    } else {
+      var bits = checkBit(pPosition, 8); //256
+      console.log(position[bits[0]] + "부위는 아이템을 벗을 수 없습니다.");
+    }
+  };
+  var checkBit = function(pValue, pMaxBit) {
+    var i, endi;
+    var bits = [];
+    0,
+      pMaxBit = pMaxBit || 32;
+
+    for (i = 0, endi = pMaxBit; i < endi; ++i) {
+      if (pValue & 1) {
+        bits.push(i);
+      }
+      pValue >>= 1
+    }
+    return bits;
+  }
+  inven[items[0].key] = items[0];
+  inven[items[1].key] = items[1];
+  inven[items[2].key] = items[2];
+</script>
+</body>
+
+</html>

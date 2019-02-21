@@ -20,6 +20,12 @@ const modals = [
 ];
 
 class ModalMain extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...this.props.state
+    }
+  }
   render() {
     return (
       <div className="modal-wrap">
@@ -27,7 +33,10 @@ class ModalMain extends Component {
           const ModalApp = modal.app;
           return (
             <div key={key + 1} className="modal-inner">
-              <ModalApp />
+              {}
+              <ModalApp
+                {...this.state}
+              />
             </div>
           );
         })}

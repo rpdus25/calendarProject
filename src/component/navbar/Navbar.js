@@ -30,7 +30,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, defaultWorkTime } = this.props;
     return (
 
 		<nav className="nav-wrapper">
@@ -41,7 +41,7 @@ class Navbar extends Component {
             <i className="material-icons" style={{display:'inline-block',verticalAlign:'middle'}}>
               alarm
             </i>
-            <span style={{display:'inline-block',verticalAlign:'middle'}}>출,퇴근시간08:00~17:00 /</span>
+            <span style={{display:'inline-block',verticalAlign:'middle'}}>출,퇴근시간{defaultWorkTime} /</span>
           </li>
 					<li> <h1>{user.firstName}{user.lastName}님</h1></li>
 
