@@ -46,7 +46,7 @@ export default props => {
       {/*<h1>{title}</h1>*/}
 
       <div style={{display:"flex", justifyContent: "space-between"}}>
-        <h1>기본 근무 시간 변경{defaultWorkTime}</h1>
+        <h1>기본 근무 시간 변경</h1>
         <button className="btn-close"><i className="material-icons" onClick={askToClose}>close</i></button>
       </div>
 

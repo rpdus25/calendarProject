@@ -21,7 +21,13 @@ class HomePage extends Component {
       defaultWorkTime:defaultWorkTime[0],
       startDate:undefined,
       endDate:undefined,
-      defaultDate:new Date() // 서버에서 받은 오늘 날짜로 수정해야함
+      defaultDate:new Date(), // 서버에서 받은 오늘 날짜로 수정해야함
+
+      baseAnnual:1, // 기본연차
+      addAnnual:8, // 추가연차
+      carryForwardAnnual:4, // 이월연차
+      remainingAnnual:4, // 남은기본연차
+      remainingAddAnnual:4 //남은추가연차
     };
   }
 

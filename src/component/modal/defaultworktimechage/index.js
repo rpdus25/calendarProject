@@ -36,19 +36,13 @@ const defaultWorkTime = [
 class DefaultWorkTimeChangeModal extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   defaultWorkTime:defaultWorkTime[1],
-    //   currentModal: null,
-    //   showModal: false,
-    //   startDate:undefined,
-    //   endDate:undefined,
-    //   defaultDate:new Date() // 서버에서 받은 오늘 날짜로 수정해야함
-    // };
     this.state = {
-      ...this.props.state,
       currentModal: null,
       showModal: false,
-    }
+      startDate:undefined,
+      endDate:undefined,
+      defaultDate:new Date() // 서버에서 받은 오늘 날짜로 수정해야함
+    };
 
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
@@ -102,13 +96,6 @@ class DefaultWorkTimeChangeModal extends Component {
     return day !== 0 && day !== 6 && date > this.state.defaultDate;
   };
 
-
-
-
-
-
-
-
   // 모달 내부 전송
   handleSubmit = (e) => {
     e.preventDefault();
@@ -140,20 +127,18 @@ class DefaultWorkTimeChangeModal extends Component {
     })
   }
 
-
-
-
-
-
-
-
-
   render() {
     const { currentModal } = this.state;
+
+
+
+
     return (
       <div>
         <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_B)}>기본 근무 시간 변경</button>
         <DefaultWorkTimeChange
+          {...this.props}
+
           isOpen={currentModal == MODAL_B}
           onAfterOpen={this.handleOnAfterOpenModal}
           onRequestClose={this.handleModalCloseRequest}
@@ -170,7 +155,7 @@ class DefaultWorkTimeChangeModal extends Component {
           isWeekday={this.isWeekday}
           years={years}
           months={months}
-          defaultWorkTime={defaultWorkTime}
+
           // defaultWorkTimeChangeSave={defaultWorkTimeChangeSave}
         />
       </div>

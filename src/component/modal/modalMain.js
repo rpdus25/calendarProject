@@ -22,25 +22,25 @@ const modals = [
 class ModalMain extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      ...this.props.state
-    }
   }
   render() {
     return (
-      <div className="modal-wrap">
-        {modals.map((modal, key) => {
-          const ModalApp = modal.app;
-          return (
-            <div key={key + 1} className="modal-inner">
-              {}
-              <ModalApp
-                {...this.state}
-              />
-            </div>
-          );
-        })}
+      <div>
+        <div className="modal-wrap">
+          {modals.map((modal, key) => {
+            const ModalApp = modal.app;
+            return (
+              <div key={key + 1} className="modal-inner">
+                {}
+                <ModalApp
+                  {...this.props}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
+
     );
   }
 }
