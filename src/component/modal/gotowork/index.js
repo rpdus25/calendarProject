@@ -11,9 +11,32 @@ class GotoWorkModal extends Component {
     super(props);
     this.state = {
       title1: DEFAULT_TITLE,
-      currentModal: null
+      currentModal: null,
+      date: new Date()
     };
   }
+
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+
+
+
 
   toggleModal = key => event => {
     event.preventDefault();
@@ -71,7 +94,9 @@ class GotoWorkModal extends Component {
           onAfterOpen={this.handleOnAfterOpenModal}
           onRequestClose={this.handleModalCloseRequest}
           askToClose={this.toggleModal(MODAL_A)}
-          onChangeInput={this.handleInputChange} />
+          onChangeInput={this.handleInputChange}
+          date={this.state.date}
+        />
       </div>
     );
   }

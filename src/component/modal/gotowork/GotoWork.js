@@ -4,8 +4,12 @@ import Modal from 'react-modal';
 export default props => {
   const {
     title, isOpen, askToClose,
-    onAfterOpen, onRequestClose, onChangeInput
+    onAfterOpen, onRequestClose, onChangeInput,
+    date
   } = props;
+
+
+
 
   return (
     <Modal
@@ -22,8 +26,12 @@ export default props => {
       onRequestClose={onRequestClose}>
       <h1>{title}</h1>
       <div>
-        현재 시각 2019-01-23 07:56:43 [수요일] 입니다. <br/>
-        출근 체크 하시겠습니까?
+        <span>
+          현재 시각 2019-01-23  [수요일] 입니다. <br/>
+          출근 체크 하시겠습니까?
+        </span>
+        {date.toLocaleTimeString()}
+
       </div>
       <button>확인</button>
       <button onClick={askToClose}>취소</button>

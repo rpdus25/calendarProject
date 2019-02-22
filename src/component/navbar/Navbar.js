@@ -12,29 +12,29 @@ class Navbar extends Component {
     };
   }
 
-  componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
-
-  tick() {
-    this.setState({
-      date: new Date()
-    });
-  }
+  // componentDidMount() {
+  //   this.timerID = setInterval(
+  //     () => this.tick(),
+  //     1000
+  //   );
+  // }
+  //
+  // componentWillUnmount() {
+  //   clearInterval(this.timerID);
+  // }
+  //
+  // tick() {
+  //   this.setState({
+  //     date: new Date()
+  //   });
+  // }
 
   render() {
     const { user, defaultWorkTime } = this.props;
     return (
 
 		<nav className="nav-wrapper">
-      <span>{this.state.date.toLocaleTimeString()}</span>
+      {/*{this.state.date.toLocaleTimeString()}*/}
 			<div className="right">
 				<ul>
           <li>
