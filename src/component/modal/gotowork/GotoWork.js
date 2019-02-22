@@ -3,9 +3,14 @@ import Modal from 'react-modal';
 
 export default props => {
   const {
-    title, isOpen, askToClose,
-    onAfterOpen, onRequestClose, onChangeInput,
-    date
+    title,
+    isOpen,
+    askToClose,
+    onAfterOpen,
+    onRequestClose,
+    onChangeInput,
+    date,
+    insertCommute
   } = props;
 
 
@@ -24,7 +29,7 @@ export default props => {
       isOpen={isOpen}
       onAfterOpen={onAfterOpen}
       onRequestClose={onRequestClose}>
-      <h1>{title}</h1>
+      <h1>{insertCommute}</h1>
       <div>
         <span>
           현재 시각 2019-01-23  [수요일] 입니다. <br/>

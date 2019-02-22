@@ -3,20 +3,17 @@ import GotoWork from '../gotowork/GotoWork';
 import '../modal.css';
 
 const MODAL_A = 'modal_a';
-
-const DEFAULT_TITLE = 'Default title';
-
 class GotoWorkModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title1: DEFAULT_TITLE,
       currentModal: null,
       date: new Date()
     };
   }
 
 
+  // 1초마다 시간이 변하는걸 알려주는 함수
   componentDidMount() {
     this.timerID = setInterval(
       () => this.tick(),
@@ -34,10 +31,7 @@ class GotoWorkModal extends Component {
     });
   }
 
-
-
-
-
+  //
   toggleModal = key => event => {
     event.preventDefault();
 
@@ -49,9 +43,7 @@ class GotoWorkModal extends Component {
       this.setState({
         ...this.state,
         currentModal: key,
-        title1: DEFAULT_TITLE
       });
-
 
       return;
 
@@ -65,14 +57,6 @@ class GotoWorkModal extends Component {
       ...this.state,
       currentModal: null
     });
-  }
-
-  handleInputChange = e => {
-    let text = e.target.value;
-    if (text == '') {
-      text = DEFAULT_TITLE;
-    }
-    this.setState({ ...this.state, title1: text });
   }
 
   handleOnAfterOpenModal = () => {
@@ -89,7 +73,6 @@ class GotoWorkModal extends Component {
         <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_A)}>{insertCommute}</button>
         <GotoWork
           {...this.props}
-          title={this.state.title1}
           isOpen={currentModal == MODAL_A}
           onAfterOpen={this.handleOnAfterOpenModal}
           onRequestClose={this.handleModalCloseRequest}

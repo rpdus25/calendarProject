@@ -26,12 +26,6 @@ const months = [
   11
 ];
 
-const defaultWorkTime = [
-  "08:00 ~ 17:00",
-  "09:00 ~ 18:00",
-  "10:00 ~ 19:00",
-]
-
 
 class DefaultWorkTimeChangeModal extends Component {
   constructor(props) {
@@ -153,8 +147,6 @@ class DefaultWorkTimeChangeModal extends Component {
           isShow={this.toggle}
           defaultDate={this.state.defaultDate}
           isWeekday={this.isWeekday}
-          years={years}
-          months={months}
 
           // defaultWorkTimeChangeSave={defaultWorkTimeChangeSave}
         />
