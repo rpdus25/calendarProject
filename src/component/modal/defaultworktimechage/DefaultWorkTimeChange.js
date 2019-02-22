@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import '../modal.css'
 import DatePicker from "react-datepicker";
-import moment from "moment/moment";
-import setMinutes from "date-fns/setMinutes";
-import setHours from "date-fns/setHours";
 import getYear from "date-fns/getYear";
 import getMonth from "date-fns/getMonth";
 
@@ -34,8 +31,7 @@ export default props => {
     <Modal
       style={{
         content: {
-          width:'600px',
-          justifyContent: "space-between"
+          width:'600px'
         }
       }}
       contentLabel="modalB"
@@ -45,7 +41,7 @@ export default props => {
       onRequestClose={onRequestClose}>
       {/*<h1>{title}</h1>*/}
 
-      <div style={{display:"flex", justifyContent: "space-between"}}>
+      <div className="list-wrap-tit">
         <h1>기본 근무 시간 변경</h1>
         <button className="btn-close"><i className="material-icons" onClick={askToClose}>close</i></button>
       </div>

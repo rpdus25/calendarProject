@@ -359,3 +359,8 @@ input[type="radio"]:checked + label {
 .btn-close:hover .material-icons {
     color: #000;
 }
+
+.list-wrap-tit {
+    display: flex;
+    justify-content: space-between;
+}

@@ -11,9 +11,8 @@ class GotoWorkModal extends Component {
       date: new Date()
     };
   }
-
-
-  // 1초마다 시간이 변하는걸 알려주는 함수
+  
+  //---- 1초마다 시간이 변하는걸 알려주는 함수------
   componentDidMount() {
     this.timerID = setInterval(
       () => this.tick(),
@@ -30,8 +29,8 @@ class GotoWorkModal extends Component {
       date: new Date()
     });
   }
+  // ------1초마다 시간이 변하는걸 알려주는 함수------
 
-  //
   toggleModal = key => event => {
     event.preventDefault();
 
@@ -46,7 +45,6 @@ class GotoWorkModal extends Component {
       });
 
       return;
-
     }
   }
 
@@ -76,7 +74,7 @@ class GotoWorkModal extends Component {
           isOpen={currentModal == MODAL_A}
           onAfterOpen={this.handleOnAfterOpenModal}
           onRequestClose={this.handleModalCloseRequest}
-          askToClose={this.toggleModal(MODAL_A)}
+          // askToClose={this.toggleModal(MODAL_A)}
           onChangeInput={this.handleInputChange}
           date={this.state.date}
         />
