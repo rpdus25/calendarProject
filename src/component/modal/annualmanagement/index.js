@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import AnnualManagement from '../annualmanagement/AnnualManagement';
 
+
+// 연차 관리
+
+
+
 const MODAL_E = 'modal_e';
-const DEFAULT_TITLE = 'Default title';
+const DEFAULT_TITLE = '연차 관리';
 
 class AnnualManagementModal extends Component {
   constructor(props) {

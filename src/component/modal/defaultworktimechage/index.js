@@ -10,22 +10,6 @@ import getYear from "date-fns/getYear";
 import getMonth from "date-fns/getMonth";
 
 const MODAL_B = 'modal_b';
-const years = range(getYear(new Date()), getYear(new Date()) + 20, 1);
-const months = [
-  0,
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11
-];
-
 
 class DefaultWorkTimeChangeModal extends Component {
   constructor(props) {
@@ -146,7 +130,6 @@ class DefaultWorkTimeChangeModal extends Component {
           selected={this.state.selected}
           isShow={this.toggle}
           defaultDate={this.state.defaultDate}
-          isWeekday={this.isWeekday}
 
           // defaultWorkTimeChangeSave={defaultWorkTimeChangeSave}
         />

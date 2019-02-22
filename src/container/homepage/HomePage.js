@@ -9,9 +9,14 @@ import isAfter from "date-fns/isAfter";
 import getDay from "date-fns/getDay";
 import range from "lodash/range";
 import getYear from "date-fns/getYear";
+import events from "../events";
 
+// 루트 파일!!!
 
+// 모달 데이트 피커에서 공통으로 쓸 년 select
 const years = range(getYear(new Date()), getYear(new Date()) + 20, 1);
+
+// 모달 데이트 피커에서 공통으로 쓸 달 select
 const months = [
   0,
   1,
@@ -27,12 +32,14 @@ const months = [
   11
 ];
 
+// 기본 출퇴근 시간
 const defaultWorkTime = [
   "08:00 ~ 17:00",
   "09:00 ~ 18:00",
   "10:00 ~ 19:00",
 ]
 
+// 현재 나의 출/퇴근 버튼 상태
 const insertCommute = [
   "출근",
   "퇴근",
@@ -41,6 +48,14 @@ const insertCommute = [
   "휴일 출근",
   "휴일 퇴근"
 ]
+
+
+
+
+
+
+
+
 
 // 2019.02.21
 class HomePage extends Component {
@@ -62,6 +77,10 @@ class HomePage extends Component {
       endDate:undefined, // 모달 데이트 피커 종로날짜
       years:years, // 모달 데이트 피커에서 공통으로 쓸 년 select
       months:months, // 모달 데이트 피커에서 공통으로 쓸 달 select
+
+      events:events,
+      desc:"개인사정",
+      selected: '연차',
     };
   }
 
@@ -70,13 +89,16 @@ class HomePage extends Component {
   }
 
 
-  handleInputChange(e) {
-    const { value, name } = e.target;
-    this.setState({ [name]: value });
-  }
+  // handleInputChange(e) {
+  //   const { value, name } = e.target;
+  //   this.setState({ [name]: value });
+  // }
 
 
-
+  isWeekday = date => {
+    const day = getDay(date);
+    return day !== 0 && day !== 6;
+  };
 
 
 
@@ -92,10 +114,12 @@ class HomePage extends Component {
           {...this.state}
         />
         <Annual
-          handleInputChange={this.handleInputChange}
+          isWeekday={this.isWeekday}
+          // handleInputChange={this.handleInputChange}
           {...this.state}
         />
         <Calenda2
+          isWeekday={this.isWeekday}
           {...this.state}
         />
 

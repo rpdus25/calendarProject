@@ -71,7 +71,7 @@ class Calenda2 extends Component {
     this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
-  // 이벤트 내용 있는 것 클릭했을때
+  // 캘린더에서 이벤트 내용 있는 것 클릭했을때
   handleOpenModal (e) {
     if(e.title === '연차') {
       console.log('dd');
@@ -86,6 +86,7 @@ class Calenda2 extends Component {
     });
   }
 
+  // 캘린더 드래그해서 select할때
   handleSelect = ({ start, end }) => {
     if(start < this.state.defaultDate || end < this.state.defaultDate ) {
       if(start.getDate() === this.state.defaultDate.getDate()) {
@@ -124,12 +125,6 @@ class Calenda2 extends Component {
     this.setState({
       desc: e.target.value
     });
-  };
-
-
-  isWeekday = date => {
-    const day = getDay(date);
-    return day !== 0 && day !== 6;
   };
 
   // 모달 닫기
@@ -289,6 +284,7 @@ class Calenda2 extends Component {
 
         />
         <AnnualManagement
+          {...this.props}
           onSubmit={this.handleSubmit}
           title={this.state.title}
           desc={this.state.desc}
@@ -307,7 +303,6 @@ class Calenda2 extends Component {
           selected={this.state.selected}
           isShow={this.toggle}
           defaultDate={this.state.defaultDate}
-          isWeekday={this.isWeekday}
           // onRequestClose={this.handleModalCloseRequest}
         />
       </div>
