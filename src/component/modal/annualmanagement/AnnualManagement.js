@@ -79,46 +79,58 @@ export default props => {
               onChange={onChangeHandleOption}
             />
             <label htmlFor="radio-3" className="btn btn-primary">오후 반차</label>
+
             <input
               className="hidden"
               type='radio'
               id='radio-4'
               name='myRadio'
-              value='외출'
-              checked={selected === '외출1'}
+              value='기타'
+              checked={selected === '기타'}
               onChange={onChangeHandleOption}
             />
-            <label htmlFor="radio-4" className="btn btn-primary"> 외출1</label>
+            <label htmlFor="radio-4" className="btn btn-primary">기타</label>
+
             <input
               className="hidden"
               type='radio'
               id='radio-5'
               name='myRadio'
-              value='외출'
-              checked={selected === '외출2'}
+              value='외출1'
+              checked={selected === '외출1'}
               onChange={onChangeHandleOption}
             />
-            <label htmlFor="radio-5" className="btn btn-primary">외출2</label>
+            <label htmlFor="radio-6" className="btn btn-primary"> 외출1</label>
             <input
               className="hidden"
               type='radio'
               id='radio-6'
               name='myRadio'
-              value='외출'
-              checked={selected === '외출3'}
+              value='외출2'
+              checked={selected === '외출2'}
               onChange={onChangeHandleOption}
             />
-            <label htmlFor="radio-6" className="btn btn-primary"> 외출3</label>
+            <label htmlFor="radio-6" className="btn btn-primary">외출2</label>
             <input
-              className='hidden'
+              className="hidden"
               type='radio'
               id='radio-7'
               name='myRadio'
-              value='외출'
+              value='외출3'
+              checked={selected === '외출3'}
+              onChange={onChangeHandleOption}
+            />
+            <label htmlFor="radio-7" className="btn btn-primary"> 외출3</label>
+            <input
+              className='hidden'
+              type='radio'
+              id='radio-8'
+              name='myRadio'
+              value='외출4'
               checked={selected === '외출4'}
               onChange={onChangeHandleOption}
             />
-            <label htmlFor="radio-7" className="btn btn-primary">외출4</label>
+            <label htmlFor="radio-8" className="btn btn-primary">외출4</label>
           </div>
           <div className="list-wrap">
             <textarea
