@@ -13,6 +13,15 @@ const defaultWorkTime = [
   "10:00 ~ 19:00",
 ]
 
+const insertCommute = [
+  "출근",
+  "퇴근",
+  "추가근무 시작",
+  "추가근무 끝",
+  "휴일 출근",
+  "휴일 퇴근"
+]
+
 // 2019.02.21
 class HomePage extends Component {
   constructor(props) {
@@ -27,13 +36,25 @@ class HomePage extends Component {
       addAnnual:8, // 추가연차
       carryForwardAnnual:4, // 이월연차
       remainingAnnual:4, // 남은기본연차
-      remainingAddAnnual:4 //남은추가연차
+      remainingAddAnnual:4, //남은추가연차
+      insertCommute:insertCommute[0] // 현재 나의 출/퇴근 버튼 상태
     };
   }
 
   componentDidMount() {
       this.props.dispatch(userActions.getAll());
   }
+
+
+  handleInputChange(e) {
+    const { value, name } = e.target;
+    this.setState({ [name]: value });
+  }
+
+
+
+
+
 
   render() {
     const {
@@ -47,6 +68,7 @@ class HomePage extends Component {
           {...this.state}
         />
         <Annual
+          handleInputChange={this.handleInputChange}
           {...this.state}
         />
         <Calenda2

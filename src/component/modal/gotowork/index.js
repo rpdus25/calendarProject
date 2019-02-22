@@ -17,16 +17,22 @@ class GotoWorkModal extends Component {
 
   toggleModal = key => event => {
     event.preventDefault();
-    if (this.state.currentModal) {
-      this.handleModalCloseRequest();
-      return;
-    }
 
-    this.setState({
-      ...this.state,
-      currentModal: key,
-      title1: DEFAULT_TITLE
-    });
+    if(this.state.currentModal && this.props.insertCommute === "출근") {
+      return false;
+    } else {
+      this.handleModalCloseRequest();
+
+      this.setState({
+        ...this.state,
+        currentModal: key,
+        title1: DEFAULT_TITLE
+      });
+
+
+      return;
+
+    }
   }
 
   handleModalCloseRequest = () => {
@@ -53,11 +59,13 @@ class GotoWorkModal extends Component {
 
   render() {
     const { currentModal } = this.state;
+    const { insertCommute } = this.props;
 
     return (
       <div>
-        <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_A)}>출근</button>
+        <button type="button" className="btn btn-primary" onClick={this.toggleModal(MODAL_A)}>{insertCommute}</button>
         <GotoWork
+          {...this.props}
           title={this.state.title1}
           isOpen={currentModal == MODAL_A}
           onAfterOpen={this.handleOnAfterOpenModal}
