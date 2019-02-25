@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { render } from "react-dom";
-import events from "../events";
+
 import BigCalendar from "react-big-calendar";
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 // import Modal from 'react-modal';
@@ -11,58 +11,24 @@ import AnnualManagement from "../../component/modal/annualmanagement/AnnualManag
 import isAfter from "date-fns/isAfter";
 import getDay from "date-fns/getDay";
 
-
 // Setup the localizer by providing the moment (or globalize) Object
 const localizer = BigCalendar.momentLocalizer(moment);
 const DraggableCalendar = withDragAndDrop(BigCalendar);
 const DEFAULT_TITLE = '연차관리';
 const propTypes = {}
 
-
-moment.locale('ko');
-moment().format('LT');   // 오후 11시 42분
-moment().format('LTS');  // 오후 11시 42분 57초
-moment().format('L');    // 2016.10.11
-moment().format('l');    // 2016.10.11
-moment().format('LL');   // 2016년 10월 11일
-moment().format('ll');   // 2016년 10월 11일
-moment().format('LLL');  // 2016년 10월 11일 오후 11시 42분
-moment().format('lll');  // 2016년 10월 11일 오후 11시 42분
-moment().format('LLLL'); // 2016년 10월 11일 화요일 오후 11시 42분
-moment().format('llll'); // 2016년 10월 11일 화 오후 11시 42분
-
-/*Agenda Rendering*/
-//Outside the class
-// function Event({ event }) {
-//   return (
-//     <span>
-//       <strong>
-//       {event.title}
-//       </strong>
-//       { event.desc && (':  ' + event.desc)}
-//     </span>
-//   )
-// }
-//
-// function EventAgenda({ event }) {
-//   return <span>
-//     <em style={{ color: 'magenta'}}>{event.title}</em><p>{ event.desc }</p>
-//       </span>
-// }
-
 class Calenda2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // events:events,
       showModal: false,
+      events:this.props.events,
       title: DEFAULT_TITLE,
       currentModal: null,
-      // desc:"개인사정",
       startDate:undefined,
       endDate:undefined,
       selected: '연차',
-      // defaultDate:new Date() // 서버에서 받은 오늘 날짜로 수정해야함
+      desc:"개인사정23",
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -71,9 +37,7 @@ class Calenda2 extends Component {
     this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
-
-
-  // 캘린더 드래그해서 select할때
+  // 캘린더 드래그해서 select할때 (재수정해야함)
   handleSelect = ({ start, end }) => {
     if(start < this.props.defaultDate || end < this.props.defaultDate ) {
       if(start.getDate() === this.props.defaultDate.getDate()) {
@@ -107,52 +71,12 @@ class Calenda2 extends Component {
     }
   }
 
-  // handleInputChange = (e) => {
-  //   this.setState({
-  //     desc: e.target.value
-  //   });
-  // };
-
   // 모달 닫기
   handleCloseModal () {
     this.setState({
       showModal: false
     });
   }
-
-  // toggleModal = key => event => {
-  //   event.preventDefault();
-  //   console.log("toggleModal");
-  //   if (this.state.currentModal) {
-  //     this.handleModalCloseRequest();
-  //     return;
-  //   }
-  //
-  //   this.setState({
-  //     ...this.state,
-  //     currentModal: key,
-  //     title: DEFAULT_TITLE
-  //   });
-  // }
-
-  handleOnAfterOpenModal = () => {
-    // when ready, we can access the available refs.
-    this.heading && (this.heading.style.color = '#F00');
-  }
-
-  /* When you choose a particular slot on the calendar */
-  // onSlotChange(slotInfo) {
-  //   var startDate = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DDm:ss");
-  //   var endDate = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DDm:ss");
-  //   console.log('startTimetartDate); //shows the start time chosen');
-  //   console.log('endTimendDate); //shows the end time chosen');
-  // }
-  //
-  // /* When you click on an already booked slot */
-  // onEventClick(event) {
-  //   console.log(event) //Shows the event details provided while booking
-  // }
-
 
   // 모달 내부 데이트 피커
   handleChange = ({ startDate, endDate }) => {
@@ -177,7 +101,7 @@ class Calenda2 extends Component {
     });
   }
 
-  // 이벤트마다 색표시 다르게
+  // 큰 달력에서만 쓰는 기능 : 이벤트마다 색표시 다르게
   eventStyleGetter = (event, start, end, isSelected) => {
     if(event.title === '연차') {
       return {
@@ -218,7 +142,7 @@ class Calenda2 extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log('submitted');
-    console.log(this.state.endDate);
+
     this.setState({
       showModal: false,
       endDate : this.state.endDate.setHours(20,21,22)
@@ -226,20 +150,27 @@ class Calenda2 extends Component {
     this.props.save(this.state);
   };
 
+
   // 캘린더에서 이벤트 내용 있는 것 클릭했을때
-  handleOpenModal (e) {
-    if(e.title === '연차') {
-      console.log('dd');
+    handleOpenModal (e) {
+      if(e.title === '연차') {
+        console.log('dd');
+      }
+
+      console.log(e.desc);
+
+      this.setState({
+        showModal: true,
+        title:e.title,
+        desc:e.desc,
+        startDate:e.start,
+        endDate:e.end
+      });
     }
 
-    this.setState({
-      showModal: true,
-      title:e.title,
-      desc:e.desc,
-      startDate:e.start,
-      endDate:e.end
-    });
-  }
+
+
+
 
   render() {
     // const { currentModal } = this.state;
@@ -252,7 +183,6 @@ class Calenda2 extends Component {
           localizer={localizer}
           defaultView={BigCalendar.Views.MONTH}
           scrollToTime={new Date(1970, 1, 1, 6)}
-          defaultDate={this.state.defaultDate}
           onSelectEvent={this.handleOpenModal} // event => alert(event.title)
           onSelectSlot={this.handleSelect}
           eventPropGetter={(this.eventStyleGetter)}
@@ -267,6 +197,7 @@ class Calenda2 extends Component {
         <AnnualManagement
           {...this.props}
           onSubmit={this.handleSubmit}
+          desc={this.state.desc}
           title={this.state.title}
           start={this.state.start}
           startDate = {this.state.startDate}

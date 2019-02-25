@@ -49,6 +49,8 @@ const insertCommute = [
   "휴일 퇴근"
 ]
 
+
+
 class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -70,7 +72,7 @@ class HomePage extends Component {
       months:months, // 모달 데이트 피커에서 공통으로 쓸 달 select
 
       events:events,
-      desc:'개인 사정',
+      desc:"개인사정",
       selected: '연차',
     };
 
@@ -81,10 +83,12 @@ class HomePage extends Component {
       this.props.dispatch(userActions.getAll());
   }
 
+
   // handleInputChange(e) {
   //   const { value, name } = e.target;
   //   this.setState({ [name]: value });
   // }
+
 
   // 데이트 피커 주말 계산
   isWeekday = date => {
@@ -119,11 +123,6 @@ class HomePage extends Component {
     });
   };
 
-
-
-
-
-
   render() {
     const {
       user,
@@ -136,16 +135,30 @@ class HomePage extends Component {
           {...this.state}
         />
         <Annual
-          {...this.state}
           isWeekday={this.isWeekday}
+          // handleInputChange={this.handleInputChange}
+          {...this.state}
         />
         <Calenda2
           {...this.state}
-          handleOpenModal={this.handleOpenModal}
           handleInputChange={this.handleInputChange}
           save={this.save}
           isWeekday={this.isWeekday}
         />
+
+        {/*관리자일 경우 */}
+        {/*<h3>Users from secure api end point:</h3>*/}
+        {/*{users.loading && <em>Loading users...</em>}*/}
+        {/*{users.error && <span className="text-danger">ERROR: {users.error}</span>}*/}
+        {/*{users.items &&*/}
+        {/*<ul>*/}
+        {/*{users.items.map((user, index) =>*/}
+        {/*<li key={user.id}>*/}
+        {/*{user.firstName + ' ' + user.lastName}*/}
+        {/*</li>*/}
+        {/*)}*/}
+        {/*</ul>*/}
+        {/*}*/}
       </div>
     );
   }

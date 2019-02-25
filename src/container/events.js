@@ -4,6 +4,7 @@ export default [
     'allDay': true,
     'start': new Date(2019, 1, 1),
     'end': new Date(2019, 1, 1),
+    'desc':"안녕 출근체크츸츸ㅊ"
   },
   {
     'title': '오전 반차',
@@ -17,6 +18,7 @@ export default [
     'allDay': true,
     'start': new Date(2019, 1, 4),
     'end': new Date(2019, 1, 4),
+    desc:"출근쳌"
   },
   {
     'title': '외출',
@@ -143,6 +145,7 @@ export default [
     'end': new Date(2019, 2, 18, 2, 0, 0)
   },
   {
+    'id':26,
     'title': 'Multi-day Event',
     'start': new Date(2019, 2, 20, 19, 20, 0),
     'end': new Date(2019, 2, 22, 2, 0, 0)

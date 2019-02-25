@@ -58,7 +58,7 @@ class Calenda2 extends Component {
       showModal: false,
       title: DEFAULT_TITLE,
       currentModal: null,
-      // desc:"개인사정",
+      desc:"개인사정",
       startDate:undefined,
       endDate:undefined,
       selected: '연차',

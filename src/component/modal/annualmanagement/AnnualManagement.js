@@ -135,7 +135,6 @@ export default props => {
           <div className="list-wrap">
             <textarea
               name=""
-              id="ddd"
               value={desc}
               placeholder="내용을 입력하세요"
               onChange={onChangeInput}
