@@ -51,13 +51,6 @@ const insertCommute = [
 
 
 
-
-
-
-
-
-
-// 2019.02.21
 class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -82,6 +75,8 @@ class HomePage extends Component {
       desc:"개인사정",
       selected: '연차',
     };
+
+
   }
 
   componentDidMount() {
@@ -95,11 +90,71 @@ class HomePage extends Component {
   // }
 
 
+  // 데이트 피커 주말 계산
   isWeekday = date => {
     const day = getDay(date);
     return day !== 0 && day !== 6;
   };
 
+  // 최초 달력에 입력한 내용들을 저장
+  save = (writingState) => {
+    const events = this.state.events;
+    let lastNoteId =  events[events.length-1].id;
+
+    this.setState({
+      events: [
+        ...events,
+        //content 안에 userInput을 넣어야, content로 저장이 됩니다.
+        {
+          id: ++lastNoteId,
+          'title': writingState.selected,
+          'start': writingState.startDate,
+          'end': writingState.endDate,
+          desc : writingState.desc
+        }
+      ]
+    })
+  }
+
+  // 캘린더에서 이벤트 내용 있는 것 클릭했을때 저장
+  save2 = (e) => {
+    const events = this.state.events;
+    this.setState({
+      events: [
+        {
+          showModal: true,
+          title:e.title,
+          desc:e.desc,
+          startDate:e.start,
+          endDate:e.end
+        }
+      ]
+    })
+  }
+
+
+
+  handleInputChange = (e) => {
+    this.setState({
+      desc: e.target.value
+    });
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
 
 
   render() {
@@ -119,6 +174,9 @@ class HomePage extends Component {
           {...this.state}
         />
         <Calenda2
+          handleInputChange={this.handleInputChange}
+          save={this.save}
+          onSelectEvent={this.handleOpenModal}
           isWeekday={this.isWeekday}
           {...this.state}
         />
