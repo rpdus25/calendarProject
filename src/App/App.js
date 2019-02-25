@@ -6,8 +6,8 @@ import { alertActions } from '../actions';
 import { PrivateRoute } from '../component/privateroute/index';
 import { HomePage } from '../container/homepage';
 import { LoginPage } from '../container/loginpage';
-import axios from "axios";
-import moment from "moment";
+// import axios from "axios";
+// import moment from "moment";
 
 
 
@@ -24,36 +24,20 @@ class App extends Component {
     }
 
 
-  componentDidMount() {
-    this.testing();
-  }
-
-  testing = async () => {
-    try {
-      const response = await axios.get("http://local.vss.projectmanagement.co.kr:8093/selectAdminAddHolidayList");
-        console.log(response.data.data[0].date);
-
-
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  // componentDidMount() {
+  //   this.testing();
+  // }
+  //
+  // testing = async () => {
+  //   try {
+  //     const response = await axios.get("http://local.vss.projectmanagement.co.kr:8093/selectAdminAddHolidayList");
+  //       console.log(response.data.data[0].date);
+  //
+  //
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
     render() {
         const { alert } = this.props;
