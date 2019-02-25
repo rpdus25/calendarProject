@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import { Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { history } from '../helpers';
 import { alertActions } from '../actions';
 import { PrivateRoute } from '../component/privateroute/index';
 import { HomePage } from '../container/homepage';
 import { LoginPage } from '../container/loginpage';
+import axios from "axios";
+import moment from "moment";
+
+
+
 
 class App extends Component {
     constructor(props) {
@@ -18,6 +22,38 @@ class App extends Component {
             dispatch(alertActions.clear());
         });
     }
+
+
+  componentDidMount() {
+    this.testing();
+  }
+
+  testing = async () => {
+    try {
+      const response = await axios.get("http://local.vss.projectmanagement.co.kr:8093/selectAdminAddHolidayList");
+        console.log(response.data.data[0].date);
+
+
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     render() {
         const { alert } = this.props;

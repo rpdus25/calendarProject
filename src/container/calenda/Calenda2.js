@@ -28,7 +28,7 @@ class Calenda2 extends Component {
       startDate:undefined,
       endDate:undefined,
       selected: '연차',
-      desc:"개인사정23",
+      desc:this.props.desc,
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -168,6 +168,13 @@ class Calenda2 extends Component {
       });
     }
 
+    // 사유 눌러서 수정
+    handleInputChange = (e) => {
+      this.setState({
+        desc: e.target.value
+      });
+    };
+
 
 
 
@@ -206,7 +213,7 @@ class Calenda2 extends Component {
           onAfterOpen={this.handleOnAfterOpenModal}
           onRequestClose={this.handleCloseModal}
           askToClose={this.handleCloseModal}
-          onChangeInput={this.props.handleInputChange}
+          onChangeInput={this.handleInputChange}
           onChangeInputStart={this.handleChangeStart}
           onChangeInputEnd={this.handleChangeEnd}
           onChangeHandleOption={this.handleOptionChange}

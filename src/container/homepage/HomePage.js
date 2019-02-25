@@ -10,8 +10,31 @@ import getDay from "date-fns/getDay";
 import range from "lodash/range";
 import getYear from "date-fns/getYear";
 import events from "../events";
+import axios from "axios/index";
+// import api from "../../lib/api.js"
+// import {getAPOD} from "../../lib/api";
 
 // 루트 파일!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 모달 데이트 피커에서 공통으로 쓸 년 select
 const years = range(getYear(new Date()), getYear(new Date()) + 20, 1);
@@ -73,8 +96,6 @@ class HomePage extends Component {
       desc:'개인 사정',
       selected: '연차',
     };
-
-
   }
 
   componentDidMount() {
@@ -112,18 +133,6 @@ class HomePage extends Component {
     })
   }
 
-  // 사유 눌러서 수정
-  handleInputChange = (e) => {
-    this.setState({
-      desc: e.target.value
-    });
-  };
-
-
-
-
-
-
   render() {
     const {
       user,
@@ -141,8 +150,6 @@ class HomePage extends Component {
         />
         <Calenda2
           {...this.state}
-          handleOpenModal={this.handleOpenModal}
-          handleInputChange={this.handleInputChange}
           save={this.save}
           isWeekday={this.isWeekday}
         />
