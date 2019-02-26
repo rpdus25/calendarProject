@@ -93,23 +93,14 @@ class HomePage extends Component {
     this.props.dispatch(userActions.getAll());
     axios.get("http://local.vss.projectmanagement.co.kr:8093/selectAdminAddHolidayList")
       .then(res =>
-        // console.log(res.data.data)
-
-      res.data.data.map((i) => {
-        console.log(res.data.data)
-        // this.setState({
-        //   events: [
-        //     ...events,
-        //     {
-        //       id: res.data.data.holidayIdno,
-        //       'start': new Date(res.data.data.date),
-        //       'end':new Date(res.data.data.date),
-        //       title:res.data.data.name,
-        //     }
-        //   ]
-        // })
+        res.data.data.map((i) => {
+          events[events.length++] = {
+            id: i.holidayIdno,
+            'start': new Date(i.date),
+            'end':new Date(i.date),
+            title:i.name,
+          };
       })
-
     );
   }
 
