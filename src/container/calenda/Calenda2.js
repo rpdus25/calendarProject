@@ -193,6 +193,10 @@ class Calenda2 extends Component {
           onSelectEvent={this.handleOpenModal} // event => alert(event.title)
           onSelectSlot={this.handleSelect}
           eventPropGetter={(this.eventStyleGetter)}
+
+
+
+
           // components={{
           //   event: Event,
           //   agenda: {

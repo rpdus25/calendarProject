@@ -10,31 +10,12 @@ import getDay from "date-fns/getDay";
 import range from "lodash/range";
 import getYear from "date-fns/getYear";
 import events from "../events";
-import axios from "axios/index";
+import axios from "axios";
+import moment from "moment";
 // import api from "../../lib/api.js"
 // import {getAPOD} from "../../lib/api";
 
 // 루트 파일!!!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // 모달 데이트 피커에서 공통으로 쓸 년 select
 const years = range(getYear(new Date()), getYear(new Date()) + 20, 1);
@@ -98,9 +79,56 @@ class HomePage extends Component {
     };
   }
 
+  // holidayList = async () => {
+  //   try {
+  //     const response = await axios.get("http://local.vss.projectmanagement.co.kr:8093/selectAdminAddHolidayList");
+  //     console.log(response.data.data);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+
+
   componentDidMount() {
-      this.props.dispatch(userActions.getAll());
+    this.props.dispatch(userActions.getAll());
+    axios.get("http://local.vss.projectmanagement.co.kr:8093/selectAdminAddHolidayList")
+      .then(res =>
+        // console.log(res.data.data)
+
+      res.data.data.map((i) => {
+        console.log(res.data.data)
+        // this.setState({
+        //   events: [
+        //     ...events,
+        //     {
+        //       id: res.data.data.holidayIdno,
+        //       'start': new Date(res.data.data.date),
+        //       'end':new Date(res.data.data.date),
+        //       title:res.data.data.name,
+        //     }
+        //   ]
+        // })
+      })
+
+    );
   }
+
+
+
+
+  // this.setState({
+  //   events: [
+  //     ...events,
+  //     {
+  //       id: res.data.data[1].holidayIdno,
+  //       'start': new Date(res.data.data[1].date),
+  //       'end':new Date(res.data.data[1].date),
+  //       title:res.data.data[1].name,
+  //     }
+  //   ]
+  // })
+
+
 
   // handleInputChange(e) {
   //   const { value, name } = e.target;
@@ -152,6 +180,7 @@ class HomePage extends Component {
           {...this.state}
           save={this.save}
           isWeekday={this.isWeekday}
+          holidayList={this.holidayList}
         />
       </div>
     );
