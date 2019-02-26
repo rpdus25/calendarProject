@@ -326,6 +326,13 @@ input[type="radio"]:checked + label {
     background: #000;
 }
 
+.rbc-event.holiday {
+    background: #f0f;
+}
+
+
+
+
 .rbc-month-header .rbc-header:first-child,
 .rbc-row .rbc-date-cell:first-child {
     color:#ff0000;

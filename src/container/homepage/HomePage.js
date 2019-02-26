@@ -76,7 +76,6 @@ class HomePage extends Component {
       events:events,
       desc:'개인 사정',
       selected: '연차',
-      holiday:[] // 공휴일
     };
   }
 
@@ -92,7 +91,7 @@ class HomePage extends Component {
 
   componentDidMount() {
     this.props.dispatch(userActions.getAll());
-    
+
     // 공휴일 리스트를 보이도록 설정한 것만 받아옴
     axios.get("http://local.vss.projectmanagement.co.kr:8093/selectAdminAddHolidayList")
       .then(res =>
@@ -104,16 +103,13 @@ class HomePage extends Component {
             'start': new Date(i.date),
             'end':new Date(i.date),
             title:i.name,
-            holidayShowchek: "공휴일",
+            holiday:i.name,
+            allDay:true,
           };
         }
       })
     );
   }
-
-
-
-
   // this.setState({
   //   events: [
   //     ...events,
@@ -125,8 +121,6 @@ class HomePage extends Component {
   //     }
   //   ]
   // })
-
-
 
   // handleInputChange(e) {
   //   const { value, name } = e.target;

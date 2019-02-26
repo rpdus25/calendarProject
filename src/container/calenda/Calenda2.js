@@ -28,8 +28,6 @@ class Calenda2 extends Component {
       startDate:undefined,
       endDate:undefined,
       selected: '연차',
-      desc:this.props.desc,
-      holiday:this.props.holiday
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -51,10 +49,12 @@ class Calenda2 extends Component {
 
     if(!(start.getDay() === 0 || start.getDay() === 6 || end.getDay() === 0 || end.getDay() === 6) ) {
       const title = "";
+      const desc = "";
       // const title = window.prompt('New Event name');
       if ({showModal: true})
         this.setState({
           title: DEFAULT_TITLE,
+          desc: this.props.desc,
           startDate: start,
           endDate: end,
           showModal: true,
@@ -72,10 +72,20 @@ class Calenda2 extends Component {
     }
   }
 
+
+
+  // handleOnAfterOpenModal = () => {
+  //   this.setState({
+  //     desc:""
+  //   });
+  // }
+
+
+
   // 모달 닫기
   handleCloseModal () {
     this.setState({
-      showModal: false
+      showModal: false,
     });
   }
 
@@ -137,6 +147,12 @@ class Calenda2 extends Component {
         className:"black"
       };
     }
+
+    if (event.holiday) {
+      return {
+        className:"holiday"
+      }
+    }
   }
 
   // 모달 내부 전송
@@ -153,32 +169,32 @@ class Calenda2 extends Component {
 
 
   // 캘린더에서 이벤트 내용 있는 것 클릭했을때
-    handleOpenModal (e) {
-      if(e.title === '연차') {
-        console.log('dd');
-      }
-
-      console.log(e.desc);
-
-      this.setState({
-        showModal: true,
-        title:e.title,
-        desc:e.desc,
-        startDate:e.start,
-        endDate:e.end
-      });
+  handleOpenModal (e) {
+    if(e.title === '연차') {
+      console.log('dd');
     }
 
-    // 사유 눌러서 수정
-    handleInputChange = (e) => {
-      this.setState({
-        desc: e.target.value
-      });
-    };
+    console.log(e.desc);
 
+    this.setState({
+      showModal: true,
+      title:e.title,
+      desc:e.desc,
+      startDate:e.start,
+      endDate:e.end
+    });
+  }
 
+  // 사유 눌러서 수정
+  handleInputChange = (e) => {
+    this.setState({
+      desc: e.target.value
+    });
+  };
 
+  componentDidMount() {
 
+  }
 
   render() {
     // const { currentModal } = this.state;
@@ -200,8 +216,8 @@ class Calenda2 extends Component {
           //     event: EventAgenda
           //   }
           // }}
-
         />
+
         <AnnualManagement
           {...this.props}
           onSubmit={this.handleSubmit}
