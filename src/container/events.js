@@ -45,12 +45,6 @@ export default [
     'end': new Date(2019, 1, 4),
   },
   {
-    'title': '외출',
-    'allDay': true,
-    'start': new Date(2019, 1, 4),
-    'end': new Date(2019, 1, 4),
-  },
-  {
     'title': '강제 야근',
     'allDay': true,
     'start': new Date(2019, 1, 4),

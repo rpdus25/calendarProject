@@ -29,6 +29,7 @@ class Calenda2 extends Component {
       endDate:undefined,
       selected: '연차',
       desc:this.props.desc,
+      holiday:this.props.holiday
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -193,10 +194,6 @@ class Calenda2 extends Component {
           onSelectEvent={this.handleOpenModal} // event => alert(event.title)
           onSelectSlot={this.handleSelect}
           eventPropGetter={(this.eventStyleGetter)}
-
-
-
-
           // components={{
           //   event: Event,
           //   agenda: {
