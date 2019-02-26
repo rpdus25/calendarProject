@@ -138,19 +138,24 @@ class HomePage extends Component {
     const events = this.state.events;
     let lastNoteId =  events[events.length-1].id;
 
-    this.setState({
-      events: [
-        ...events,
-        //content 안에 userInput을 넣어야, content로 저장이 됩니다.
-        {
-          id: ++lastNoteId,
-          'title': writingState.selected,
-          'start': writingState.startDate,
-          'end': writingState.endDate,
-          desc : writingState.desc
-        }
-      ]
-    })
+    // this.setState({
+    //   events: [
+    //     ...events,
+    //     //content 안에 userInput을 넣어야, content로 저장이 됩니다.
+    //     {
+    //       id: ++lastNoteId,
+    //       'title': writingState.selected,
+    //       'start': writingState.startDate,
+    //       'end': writingState.endDate,
+    //       desc : writingState.desc
+    //     }
+    //   ]
+    // })
+
+
+
+
+
   }
 
   render() {

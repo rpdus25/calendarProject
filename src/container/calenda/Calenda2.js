@@ -10,6 +10,7 @@ import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import AnnualManagement from "../../component/modal/annualmanagement/AnnualManagement"
 import isAfter from "date-fns/isAfter";
 import getDay from "date-fns/getDay";
+import axios from "axios/index";
 
 // Setup the localizer by providing the moment (or globalize) Object
 const localizer = BigCalendar.momentLocalizer(moment);
@@ -51,7 +52,7 @@ class Calenda2 extends Component {
       const title = "";
       const desc = "";
       // const title = window.prompt('New Event name');
-      if ({showModal: true})
+      if ({showModal: true}) {
         this.setState({
           title: DEFAULT_TITLE,
           desc: this.props.desc,
@@ -67,6 +68,7 @@ class Calenda2 extends Component {
             },
           ],
         });
+      }
     } else {
       alert("휴일은 입력이 불가능합니다.");
     }
@@ -165,6 +167,29 @@ class Calenda2 extends Component {
       endDate : this.state.endDate.setHours(20,21,22)
     });
     this.props.save(this.state);
+
+
+    axios.post('http://local.vss.projectmanagement.co.kr:8093/insertVacation', {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
+      startVacationDatepicker : new Date(),
+      endVacationDatepicker : new Date(),
+      vacationSummary : "테스트중",
+      vacationChoice :"연차"
+    })
+      .then( response => { console.log(response) } )
+      .catch( response => { console.log(response) } )
+
+
+
+
+
+
+
+
+
   };
 
 
