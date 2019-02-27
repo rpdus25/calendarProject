@@ -4,6 +4,7 @@ import '../modal.css'
 import DatePicker from "react-datepicker";
 import getYear from "date-fns/getYear";
 import getMonth from "date-fns/getMonth";
+import buttonRefresh from "../../../lib/buttonRefresh";
 
 export default props => {
   const {
@@ -43,7 +44,7 @@ export default props => {
         //   backgroundColor: 'rgba(0, 0, 0, 0.75)'
         // },
         content: {
-          width:'400px'
+          width: '400px'
         }
       }}
       contentLabel="modalC"
@@ -79,8 +80,8 @@ export default props => {
                                    }) => (
                 <div
                   style={{
-                    margin: 10,
-                    display: "flex",
+                    margin        : 10,
+                    display       : "flex",
                     justifyContent: "center"
                   }}
                 >
@@ -92,7 +93,7 @@ export default props => {
                   </button>
                   <select
                     value={getYear(date)}
-                    onChange={({ target: { value } }) => changeYear(value)}
+                    onChange={({target: {value}}) => changeYear(value)}
                   >
                     {years.map(option => (
                       <option key={option} value={option}>
@@ -103,7 +104,7 @@ export default props => {
 
                   <select
                     value={months[getMonth(date)]}
-                    onChange={({ target: { value } }) => changeMonth(value)}
+                    onChange={({target: {value}}) => changeMonth(value)}
                   >
                     {months.map(option => (
                       <option key={option} value={option}>
@@ -128,7 +129,7 @@ export default props => {
           <dd>
             <i className="material-icons">access_time</i>
 
-            <select name="" id="" >
+            <select name="" id="">
               <option value="0">08:00 ~ 17:00</option>
               <option value="1">09:00 ~ 18:00</option>
               <option value="2">10:00 ~ 19:00</option>
@@ -138,14 +139,13 @@ export default props => {
         <div className="list-wrap" style={{justifyContent: "flex-end"}}>
           <button
             className="btn btn-primary"
-            // onClick={defaultWorkTimeChangeSave}
+            onClick={onSubmit}
           >
             저장
           </button>
           <button className="btn btn-primary" onClick={askToClose}>닫기</button>
         </div>
       </div>
-
     </Modal>
   );
 }

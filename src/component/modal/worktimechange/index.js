@@ -16,10 +16,8 @@ class WorkTimeChangeModal extends Component {
     super(props);
     this.state = {
       currentModal: null,
-      showModal: false,
       startDate:undefined,
       endDate:undefined,
-      defaultDate:new Date() // 서버에서 받은 오늘 날짜로 수정해야함
     };
 
     this.handleChangeStart = this.handleChangeStart.bind(this);
@@ -70,42 +68,16 @@ class WorkTimeChangeModal extends Component {
   handleChangeStart = startDate => this.handleChange({ startDate });
   handleChangeEnd = endDate => this.handleChange({ endDate });
 
-  // 주말 및 오늘은 제외한 기본 근무 시간 변경 달력 표시
-  isWeekday = date => {
-    const day = getDay(date);
-    return day !== 0 && day !== 6 && date > this.state.defaultDate;
-  };
-
-  // 모달 내부 전송
+  // 출근 타입 임시변경 모달 내부 전송
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('submitted');
-    console.log(this.state.endDate);
+    console.log('근무 시간 변경 submitted');
     this.setState({
-      showModal: false,
-      endDate : this.state.endDate.setHours(20,21,22)
+      startDate : this.state.startDate.setHours(20,21,22),
+      endDate : this.state.startDate.setHours(20,21,22)
     });
-    this.save(this.state);
+    this.tempCommutingTypeUpdate(this.state);
   };
-
-  save = (writingState) => {
-    const events = this.state.events;
-    let lastNoteId =  events[events.length-1].id;
-
-    this.setState({
-      events: [
-        ...events,
-        //content 안에 userInput을 넣어야, content로 저장이 됩니다.
-        {
-          id: ++lastNoteId,
-          'title': writingState.selected,
-          'start': writingState.startDate,
-          'end': writingState.endDate,
-          desc : writingState.desc
-        }
-      ]
-    })
-  }
 
   render() {
     const { currentModal } = this.state;
@@ -124,12 +96,9 @@ class WorkTimeChangeModal extends Component {
           start={this.state.start}
           startDate = {this.state.startDate}
           endDate = {this.state.endDate}
-          events={this.state.events}
           onChangeInputStart={this.handleChangeStart}
           selected={this.state.selected}
           isShow={this.toggle}
-          defaultDate={this.state.defaultDate}
-          isWeekday={this.isWeekday}
         />
 
         {/* 그냥 모달로 추가했을 때 수정 */}

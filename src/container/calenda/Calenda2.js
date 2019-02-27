@@ -181,15 +181,6 @@ class Calenda2 extends Component {
     })
       .then( response => { console.log(response) } )
       .catch( response => { console.log(response) } )
-
-
-
-
-
-
-
-
-
   };
 
 

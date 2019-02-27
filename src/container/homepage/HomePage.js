@@ -15,6 +15,8 @@ import moment from "moment";
 // import api from "../../lib/api.js"
 // import {getAPOD} from "../../lib/api";
 
+import buttonRefresh from "../../lib/buttonRefresh"
+
 // 루트 파일!!!
 
 // 모달 데이트 피커에서 공통으로 쓸 년 select
@@ -45,12 +47,11 @@ const defaultWorkTime = [
 
 // 현재 나의 출/퇴근 버튼 상태
 const insertCommute = [
-  "출근",
-  "퇴근",
-  "추가근무 시작",
-  "추가근무 끝",
-  "휴일 출근",
-  "휴일 퇴근"
+  "",
+  "출근", // 1
+  "퇴근", // 2
+  "추가근무 시작", // 3
+  "추가근무 끝", // 4
 ]
 
 class HomePage extends Component {
@@ -65,8 +66,8 @@ class HomePage extends Component {
       carryForwardAnnual:4, // 이월연차
       remainingAnnual:4, // 남은기본연차
       remainingAddAnnual:4, // 남은추가연차
-      
-      insertCommute:insertCommute[0], // 현재 나의 출/퇴근 버튼 상태
+
+      insertCommute:insertCommute[buttonRefresh[0].data.commutingType], // 현재 나의 출/퇴근 버튼 상태
 
       startDate:undefined, // 모달 데이트 피커 시작날짜
       endDate:undefined, // 모달 데이트 피커 종로날짜
@@ -75,7 +76,7 @@ class HomePage extends Component {
 
       events:events,
       desc:'개인 사정',
-      selected: '연차',
+      selected: undefined,
     };
   }
 
@@ -109,7 +110,19 @@ class HomePage extends Component {
         }
       })
     );
+
+    axios.get("http://local.vss.projectmanagement.co.kr:8093/saveSession")
+      .then(res =>
+        console.log(res.data)
+      );
+
+
+    axios.get("http://local.vss.projectmanagement.co.kr:8093/buttonRefresh")
+      .then(res =>
+        console.log(res.data)
+      );
   }
+
   // this.setState({
   //   events: [
   //     ...events,
@@ -136,27 +149,42 @@ class HomePage extends Component {
   // 최초 달력에 입력한 내용들을 저장
   save = (writingState) => {
     const events = this.state.events;
-    let lastNoteId =  events[events.length-1].id;
+    // let lastNoteId =  events[events.length-1].id;
 
-    // this.setState({
-    //   events: [
-    //     ...events,
-    //     //content 안에 userInput을 넣어야, content로 저장이 됩니다.
-    //     {
-    //       id: ++lastNoteId,
-    //       'title': writingState.selected,
-    //       'start': writingState.startDate,
-    //       'end': writingState.endDate,
-    //       desc : writingState.desc
-    //     }
-    //   ]
-    // })
-
-
-
-
-
+    this.setState({
+      events: [
+        ...events,
+        //content 안에 userInput을 넣어야, content로 저장이 됩니다.
+        {
+          // id: ++lastNoteId,
+          'title': writingState.selected,
+          'start': writingState.startDate,
+          'end': writingState.endDate,
+          desc : writingState.desc
+        }
+      ]
+    })
   }
+
+  // 출근 타입 임시변경
+  tempCommutingTypeUpdate = (writingState) => {
+    const events = this.state.events;
+    // let lastNoteId =  events[events.length-1].id;
+
+    this.setState({
+      events: [
+        ...events,
+        //content 안에 userInput을 넣어야, content로 저장이 됩니다.
+        {
+          'start': writingState.startDate,
+          'end': writingState.endDate
+        }
+      ]
+    })
+  }
+
+
+
 
   render() {
     const {
@@ -171,6 +199,7 @@ class HomePage extends Component {
         />
         <Annual
           {...this.state}
+          tempCommutingTypeUpdate={this.tempCommutingTypeUpdate}
           isWeekday={this.isWeekday}
         />
         <Calenda2
