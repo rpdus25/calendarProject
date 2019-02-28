@@ -77,7 +77,8 @@ export default [
     id:14,
     'title': '외출',
     'start': new Date(2019, 1, 6, 0, 0, 0),
-    'end': new Date(2019, 1, 6, 0, 0, 0)
+    'end': new Date(2019, 1, 6, 0, 0, 0),
+    'desc':'날이 좋아서 외출을 한다.'
   },
   // {
   //   'title': 'Some Event',

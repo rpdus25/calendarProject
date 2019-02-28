@@ -131,8 +131,8 @@ export default props => {
 
             <select
               name="workTimeChangeValue"
-              selected={selected}
               onChange={onChangeHandleOption}
+              value={selected}
             >
               <option value="0">08:00 ~ 17:00</option>
               <option value="1">09:00 ~ 18:00</option>

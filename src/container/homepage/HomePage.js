@@ -171,13 +171,18 @@ class HomePage extends Component {
     const events = this.state.events;
     // let lastNoteId =  events[events.length-1].id;
 
+    console.log(writingState);
+
+
     this.setState({
       events: [
         ...events,
         //content 안에 userInput을 넣어야, content로 저장이 됩니다.
         {
           'start': writingState.startDate,
-          'end': writingState.endDate
+          'end': writingState.startDate,
+          'title':writingState.selected,
+          workTimeChange:true
         }
       ]
     })

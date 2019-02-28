@@ -330,6 +330,9 @@ input[type="radio"]:checked + label {
     background: #f0f;
 }
 
+.rbc-event.workTimeChange {
+    background: #34d283;
+}
 
 
 

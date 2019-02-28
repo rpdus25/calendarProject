@@ -155,6 +155,11 @@ class Calenda2 extends Component {
         className:"holiday"
       }
     }
+    if (event.workTimeChange) {
+      return {
+        className:"workTimeChange"
+      }
+    }
   }
 
   // 모달 내부 전송

@@ -13,7 +13,7 @@ class WorkTimeChangeModal extends Component {
       currentModal: null,
       startDate:undefined,
       endDate:undefined,
-      selected:undefined
+      selected:"08:00 ~ 17:00"
     };
 
     this.handleChangeStart = this.handleChangeStart.bind(this);
@@ -73,7 +73,8 @@ class WorkTimeChangeModal extends Component {
     this.setState({
       currentModal: null,
       startDate : this.state.startDate,
-      endDate : this.state.startDate
+      endDate : this.state.startDate,
+      title : this.state.selected
     });
     this.props.tempCommutingTypeUpdate(this.state);
   };
