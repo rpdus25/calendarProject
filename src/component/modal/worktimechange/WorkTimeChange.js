@@ -129,7 +129,11 @@ export default props => {
           <dd>
             <i className="material-icons">access_time</i>
 
-            <select name="" id="">
+            <select
+              name="workTimeChangeValue"
+              selected={selected}
+              onChange={onChangeHandleOption}
+            >
               <option value="0">08:00 ~ 17:00</option>
               <option value="1">09:00 ~ 18:00</option>
               <option value="2">10:00 ~ 19:00</option>

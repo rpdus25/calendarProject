@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import WorkTimeChange from '../worktimechange/WorkTimeChange';
 import '../modal.css';
-import moment from "moment";
 import isAfter from "date-fns/isAfter";
-import getDay from "date-fns/getDay";
-import DatePicker from "react-datepicker";
-import range from "lodash/range";
-import getYear from "date-fns/getYear";
-import getMonth from "date-fns/getMonth";
+import moment from "moment";
 
 const MODAL_C = 'modal_c';
 
@@ -18,10 +13,12 @@ class WorkTimeChangeModal extends Component {
       currentModal: null,
       startDate:undefined,
       endDate:undefined,
+      selected:undefined
     };
 
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
+    this.handleOptionChange = this.handleOptionChange.bind(this);
   }
 
   toggleModal = key => event => {
@@ -72,12 +69,21 @@ class WorkTimeChangeModal extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log('근무 시간 변경 submitted');
+    console.log(this.state.selected);
     this.setState({
-      startDate : this.state.startDate.setHours(20,21,22),
-      endDate : this.state.startDate.setHours(20,21,22)
+      currentModal: null,
+      startDate : this.state.startDate,
+      endDate : this.state.startDate
     });
-    this.tempCommutingTypeUpdate(this.state);
+    this.props.tempCommutingTypeUpdate(this.state);
   };
+
+  // 모달 내부 라디오 버튼 체인지
+  handleOptionChange = (e) => {
+    this.setState({
+      selected: e.target.options[e.target.selectedIndex].text
+    });
+  }
 
   render() {
     const { currentModal } = this.state;
@@ -93,12 +99,13 @@ class WorkTimeChangeModal extends Component {
           onRequestClose={this.handleModalCloseRequest}
           askToClose={this.toggleModal(MODAL_C)}
           onSubmit={this.handleSubmit}
-          start={this.state.start}
+          start={moment(this.props.defaultDate).add(1, 'days')}
           startDate = {this.state.startDate}
           endDate = {this.state.endDate}
           onChangeInputStart={this.handleChangeStart}
           selected={this.state.selected}
           isShow={this.toggle}
+          onChangeHandleOption={this.handleOptionChange}
         />
 
         {/* 그냥 모달로 추가했을 때 수정 */}
